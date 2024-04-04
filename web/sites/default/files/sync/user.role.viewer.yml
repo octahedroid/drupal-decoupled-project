@@ -1,0 +1,14 @@
+uuid: f345e855-88f1-4908-933f-881221a06959
+langcode: en
+status: true
+dependencies:
+  module:
+    - graphql
+    - graphql_compose_preview
+id: viewer
+label: Viewer
+weight: -7
+is_admin: null
+permissions:
+  - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'view graphql_compose_preview entity'

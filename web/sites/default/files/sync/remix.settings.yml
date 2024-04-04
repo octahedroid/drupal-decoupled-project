@@ -1,0 +1,5 @@
+preview_url: 'http://localhost:8080'
+node_types:
+  article: true
+  page: true
+draft_provider: graphql_compose_preview

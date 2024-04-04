@@ -1,0 +1,4 @@
+name: drupal-graphql-example
+recipe: drupal10
+config:
+  webroot: web

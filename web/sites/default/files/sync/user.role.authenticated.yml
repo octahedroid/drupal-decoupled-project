@@ -1,0 +1,22 @@
+uuid: 80d3cd4f-dc41-454a-8cbe-20a51e4ab4e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+    - search
+    - shortcut
+    - system
+_core:
+  default_config_hash: I44QAB4es39lNzMQWiJLq2dfjX7VRSOzT_5KzAcUq_M
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access shortcuts'
+  - 'delete own files'
+  - 'search content'
+  - 'view media'
