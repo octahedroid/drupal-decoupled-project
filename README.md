@@ -28,10 +28,10 @@ ddev drush uli admin
 
 ### Configure Simple OAuth Settings
 
-Generate keys visiting `admin/config/people/simple_oauth`
+Generate keys visiting `admin/config/people/simple_oauth` we suggest you to use `../` on the directory field at the overlay window.
 
-Created two new Consumer client and assigned the proper Scope of `Viewer` & `Previewer` to each one.
+Created two new Consumer client and assign the proper Scope of `Viewer` & `Previewer` to each one.
 
-> Make sure you remember the values used as secrets because you will need them for the front-end env variables configuration.
+> Make sure you remember the values used as secret on each one because you will need them for the front-end env variables configuration.
 
 More info about it at this blog post [Implementing Content Previews with Drupal and Remix](https://octahedroid.com/blog/implementing-content-previews-drupal-and-remix)
