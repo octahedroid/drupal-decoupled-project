@@ -20,6 +20,12 @@ ddev start
 ddev import-db --file=db.sql.gz
 ```
 
+### Install dependencies using composer
+
+```bash
+ddev composer install
+```
+
 ### Login using drush
 
 ```bash
@@ -30,7 +36,7 @@ ddev drush uli admin
 
 Generate keys visiting `admin/config/people/simple_oauth` we suggest you to use `../` on the directory field at the overlay window.
 
-Created two new Consumer client and assign the proper Scope of `Viewer` & `Previewer` to each one.
+You can reuse the previously generated Consumers currently at the site, or you can created new Consumers if this is the case, make sure you and assign the proper Scope of `Viewer` & `Previewer` depending on the usage you are planing to give to each one.
 
 > Make sure you remember the values used as secret on each one because you will need them for the front-end env variables configuration.
 
