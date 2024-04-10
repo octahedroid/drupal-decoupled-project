@@ -1,8 +1,0 @@
-framework: remix
-disable_styles: true
-open_load: true
-wrapper:
-  selector: .tabs-composable-components
-  type: tab
-  mode: horizontal
-  position: '2'

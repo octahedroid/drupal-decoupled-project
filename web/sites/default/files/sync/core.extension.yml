@@ -11,12 +11,12 @@ module:
   breakpoint: 0
   ckeditor5: 0
   coffee: 0
-  composable: 0
   config: 0
   consumers: 0
   contextual: 0
   datetime: 0
   dblog: 0
+  decoupled_preview_iframe: 0
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
@@ -58,7 +58,6 @@ module:
   path_alias: 0
   phpass: 0
   redirect: 0
-  remix: 0
   search: 0
   serialization: 0
   shortcut: 0
@@ -76,8 +75,6 @@ module:
   viewfield: 0
   views_ui: 0
   pathauto: 1
-  composable_editor: 10
-  composable_editor_paragraphs: 10
   views: 10
   paragraphs: 11
   standard: 1000

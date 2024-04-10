@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "478128fe0d91d83b8afce26a86b9e398",
+    "content-hash": "76b21a4c0203391280ce5cc28a6ba0ea",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1552,73 +1552,6 @@
             }
         },
         {
-            "name": "drupal/composable",
-            "version": "0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/composable.git",
-                "reference": "0.1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/composable-0.1.2.zip",
-                "reference": "0.1.2",
-                "shasum": "72ee7bfbee6d00c3ffc12b2bf78c9c271368abb0"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10 || 11",
-                "drupal/dynamic_entity_reference": "^3.2"
-            },
-            "require-dev": {
-                "drupal/composable_editor-composable_editor": "*",
-                "drupal/paragraphs": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "0.1.2",
-                    "datestamp": "1712713852",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Arlina",
-                    "homepage": "https://www.drupal.org/user/1055344"
-                },
-                {
-                    "name": "jmolivas",
-                    "homepage": "https://www.drupal.org/user/678770"
-                },
-                {
-                    "name": "roaguicr",
-                    "homepage": "https://www.drupal.org/user/2334450"
-                }
-            ],
-            "description": "Drupal Composable.",
-            "homepage": "https://www.drupal.org/project/composable",
-            "keywords": [
-                "Composable",
-                "Content",
-                "Decoupled",
-                "Drupal",
-                "Next.js",
-                "Remix",
-                "Structured"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/composable",
-                "issues": "http://drupal.org/project/issues/composable"
-            }
-        },
-        {
             "name": "drupal/consumers",
             "version": "1.17.0",
             "source": {
@@ -2096,6 +2029,50 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/decoupled_preview_iframe",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/decoupled_preview_iframe-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "44873b1abe18526451b029b142d2f7604bea4496"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1712733815",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jmolivas",
+                    "homepage": "https://www.drupal.org/user/678770"
+                }
+            ],
+            "description": "Preview Drupal content from your decoupled front-end site, extending the node-view page embedding an Iframe with the content of your FE application.",
+            "homepage": "https://www.drupal.org/project/decoupled_preview_iframe",
+            "support": {
+                "source": "https://git.drupalcode.org/project/decoupled_preview_iframe"
             }
         },
         {
@@ -3092,50 +3069,6 @@
             "homepage": "https://www.drupal.org/project/redirect",
             "support": {
                 "source": "https://git.drupalcode.org/project/redirect"
-            }
-        },
-        {
-            "name": "drupal/remix",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/remix.git",
-                "reference": "1.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/remix-1.0.0.zip",
-                "reference": "1.0.0",
-                "shasum": "fb2a7b0eff65c8a0021d377491d95590859e0885"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.0",
-                    "datestamp": "1711781499",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "jmolivas",
-                    "homepage": "https://www.drupal.org/user/678770"
-                }
-            ],
-            "description": "Remix <> Drupal integration.",
-            "homepage": "https://www.drupal.org/project/remix",
-            "support": {
-                "source": "https://git.drupalcode.org/project/remix"
             }
         },
         {

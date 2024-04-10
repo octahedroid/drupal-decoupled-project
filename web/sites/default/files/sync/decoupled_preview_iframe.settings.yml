@@ -1,0 +1,8 @@
+node_types:
+  article: true
+  page: true
+route_sync:
+  type: REMIX_DRUPAL_ROUTE_SYNC
+preview_url: 'http://localhost:8080'
+draft:
+  provider: graphql_compose_preview
