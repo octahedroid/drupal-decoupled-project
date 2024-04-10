@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61bc410e1940fb73be599d6b4e20d0f2",
+    "content-hash": "478128fe0d91d83b8afce26a86b9e398",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -350,25 +350,25 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "4.9.2",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "b5255dcbee1de95036185062a103dabc622224de"
+                "reference": "1e830ba908c9ffb1ba7ca056203531b27188812c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/b5255dcbee1de95036185062a103dabc622224de",
-                "reference": "b5255dcbee1de95036185062a103dabc622224de",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/1e830ba908c9ffb1ba7ca056203531b27188812c",
+                "reference": "1e830ba908c9ffb1ba7ca056203531b27188812c",
                 "shasum": ""
             },
             "require": {
                 "consolidation/output-formatters": "^4.3.1",
                 "php": ">=7.1.3",
                 "psr/log": "^1 || ^2 || ^3",
-                "symfony/console": "^4.4.8 || ^5 || ^6",
-                "symfony/event-dispatcher": "^4.4.8 || ^5 || ^6",
-                "symfony/finder": "^4.4.8 || ^5 || ^6"
+                "symfony/console": "^4.4.8 || ^5 || ^6 || ^7",
+                "symfony/event-dispatcher": "^4.4.8 || ^5 || ^6 || ^7",
+                "symfony/finder": "^4.4.8 || ^5 || ^6 || ^7"
             },
             "require-dev": {
                 "composer-runtime-api": "^2.0",
@@ -400,9 +400,9 @@
             "description": "Initialize Symfony Console commands from annotated command class methods.",
             "support": {
                 "issues": "https://github.com/consolidation/annotated-command/issues",
-                "source": "https://github.com/consolidation/annotated-command/tree/4.9.2"
+                "source": "https://github.com/consolidation/annotated-command/tree/4.10.0"
             },
-            "time": "2023-12-26T14:30:50+00:00"
+            "time": "2024-04-05T21:05:39+00:00"
         },
         {
             "name": "consolidation/config",
@@ -516,32 +516,32 @@
         },
         {
             "name": "consolidation/log",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/log.git",
-                "reference": "caaad9d70dae54eb49002666f000e3c607066878"
+                "reference": "c27a3beb36137c141ccbce0d89f64befb243c015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/log/zipball/caaad9d70dae54eb49002666f000e3c607066878",
-                "reference": "caaad9d70dae54eb49002666f000e3c607066878",
+                "url": "https://api.github.com/repos/consolidation/log/zipball/c27a3beb36137c141ccbce0d89f64befb243c015",
+                "reference": "c27a3beb36137c141ccbce0d89f64befb243c015",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0.0",
                 "psr/log": "^3",
-                "symfony/console": "^5 || ^6"
+                "symfony/console": "^5 || ^6 || ^7"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=7.5.20",
+                "phpunit/phpunit": "^7.5.20 || ^8 || ^9",
                 "squizlabs/php_codesniffer": "^3",
                 "yoast/phpunit-polyfills": "^0.2.0"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
+                "platform": {
+                    "php": "8.2.17"
                 }
             },
             "autoload": {
@@ -562,9 +562,9 @@
             "description": "Improved Psr-3 / Psr\\Log logger based on Symfony Console components.",
             "support": {
                 "issues": "https://github.com/consolidation/log/issues",
-                "source": "https://github.com/consolidation/log/tree/3.0.0"
+                "source": "https://github.com/consolidation/log/tree/3.1.0"
             },
-            "time": "2022-04-05T16:53:32+00:00"
+            "time": "2024-04-04T23:50:25+00:00"
         },
         {
             "name": "consolidation/output-formatters",
@@ -750,23 +750,23 @@
         },
         {
             "name": "consolidation/site-alias",
-            "version": "4.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/site-alias.git",
-                "reference": "b0eeb8c8f3d54d072824ee31b5e00cb5181f91c5"
+                "reference": "1056ceb93f6aafe6f7600d7bbe1b62b8488abccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/site-alias/zipball/b0eeb8c8f3d54d072824ee31b5e00cb5181f91c5",
-                "reference": "b0eeb8c8f3d54d072824ee31b5e00cb5181f91c5",
+                "url": "https://api.github.com/repos/consolidation/site-alias/zipball/1056ceb93f6aafe6f7600d7bbe1b62b8488abccf",
+                "reference": "1056ceb93f6aafe6f7600d7bbe1b62b8488abccf",
                 "shasum": ""
             },
             "require": {
-                "consolidation/config": "^1.2.1 || ^2",
+                "consolidation/config": "^1.2.1 || ^2 || ^3",
                 "php": ">=7.4",
-                "symfony/filesystem": "^5.4 || ^6",
-                "symfony/finder": "^5 || ^6"
+                "symfony/filesystem": "^5.4 || ^6 || ^7",
+                "symfony/finder": "^5 || ^6 || ^7"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.4.2",
@@ -803,30 +803,30 @@
             "description": "Manage alias records for local and remote sites.",
             "support": {
                 "issues": "https://github.com/consolidation/site-alias/issues",
-                "source": "https://github.com/consolidation/site-alias/tree/4.0.1"
+                "source": "https://github.com/consolidation/site-alias/tree/4.1.0"
             },
-            "time": "2023-04-29T17:18:10+00:00"
+            "time": "2024-04-05T15:58:04+00:00"
         },
         {
             "name": "consolidation/site-process",
-            "version": "5.3.0",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/site-process.git",
-                "reference": "5e8eff50fd0015e7ca0b6ce4082cacef012f2f77"
+                "reference": "7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/site-process/zipball/5e8eff50fd0015e7ca0b6ce4082cacef012f2f77",
-                "reference": "5e8eff50fd0015e7ca0b6ce4082cacef012f2f77",
+                "url": "https://api.github.com/repos/consolidation/site-process/zipball/7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a",
+                "reference": "7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a",
                 "shasum": ""
             },
             "require": {
-                "consolidation/config": "^2",
+                "consolidation/config": "^2 || ^3",
                 "consolidation/site-alias": "^3 || ^4",
                 "php": ">=8.0.14",
-                "symfony/console": "^5.4 || ^6",
-                "symfony/process": "^6"
+                "symfony/console": "^5.4 || ^6 || ^7",
+                "symfony/process": "^6 || ^7"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9",
@@ -860,9 +860,9 @@
             "description": "A thin wrapper around the Symfony Process Component that allows applications to use the Site Alias library to specify the target for a remote call.",
             "support": {
                 "issues": "https://github.com/consolidation/site-process/issues",
-                "source": "https://github.com/consolidation/site-process/tree/5.3.0"
+                "source": "https://github.com/consolidation/site-process/tree/5.4.0"
             },
-            "time": "2024-04-01T12:42:12+00:00"
+            "time": "2024-04-06T00:00:28+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -1553,17 +1553,17 @@
         },
         {
             "name": "drupal/composable",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/composable.git",
-                "reference": "0.1.1"
+                "reference": "0.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/composable-0.1.1.zip",
-                "reference": "0.1.1",
-                "shasum": "e8b8a2c082ef8c4f61fee64ebe4bd231cf814642"
+                "url": "https://ftp.drupal.org/files/projects/composable-0.1.2.zip",
+                "reference": "0.1.2",
+                "shasum": "72ee7bfbee6d00c3ffc12b2bf78c9c271368abb0"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || 11",
@@ -1576,8 +1576,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "0.1.1",
-                    "datestamp": "1711993069",
+                    "version": "0.1.2",
+                    "datestamp": "1712713852",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2292,17 +2292,17 @@
         },
         {
             "name": "drupal/gin",
-            "version": "3.0.0-rc9",
+            "version": "3.0.0-rc10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin.git",
-                "reference": "8.x-3.0-rc9"
+                "reference": "8.x-3.0-rc10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc9.zip",
-                "reference": "8.x-3.0-rc9",
-                "shasum": "130dec0ea8152bc796d8bbca1bc97b2ae0c381f4"
+                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc10.zip",
+                "reference": "8.x-3.0-rc10",
+                "shasum": "f79fd895dd1f16c3af457bfaed5527f5b5bc752c"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -2311,8 +2311,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-rc9",
-                    "datestamp": "1706705034",
+                    "version": "8.x-3.0-rc10",
+                    "datestamp": "1712686345",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -2354,26 +2354,26 @@
         },
         {
             "name": "drupal/gin_login",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin_login.git",
-                "reference": "2.0.3"
+                "reference": "2.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin_login-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "f5be85feabfde975d088a3a6b4365e0b155eb4b8"
+                "url": "https://ftp.drupal.org/files/projects/gin_login-2.0.4.zip",
+                "reference": "2.0.4",
+                "shasum": "7b67b50ebba7e69ec690e1f2557fdbae431d4638"
             },
             "require": {
-                "drupal/core": "^8.9 || ^9 || ^10"
+                "drupal/core": "^8.9 || ^9 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1697916978",
+                    "version": "2.0.4",
+                    "datestamp": "1712687134",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2613,20 +2613,20 @@
         },
         {
             "name": "drupal/graphql_compose_preview",
-            "version": "1.0.0-beta3",
+            "version": "1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/graphql_compose_preview.git",
-                "reference": "1.0.0-beta3"
+                "reference": "1.0.0-beta5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/graphql_compose_preview-1.0.0-beta3.zip",
-                "reference": "1.0.0-beta3",
-                "shasum": "3b4c848ce20efe05fb93ed7e72cd586a12402d81"
+                "url": "https://ftp.drupal.org/files/projects/graphql_compose_preview-1.0.0-beta5.zip",
+                "reference": "1.0.0-beta5",
+                "shasum": "b9292f32aef69227b9a46e8319b66e47ee3d4282"
             },
             "require": {
-                "drupal/core": "^10",
+                "drupal/core": "^10.1 || ^11",
                 "drupal/graphql_compose": "^2.1",
                 "drupal/graphql_compose_routes": "*",
                 "drupal/token": "*",
@@ -2638,8 +2638,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta3",
-                    "datestamp": "1711579566",
+                    "version": "1.0.0-beta5",
+                    "datestamp": "1712632824",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2903,17 +2903,17 @@
         },
         {
             "name": "drupal/password_policy",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/password_policy.git",
-                "reference": "4.0.0"
+                "reference": "4.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/password_policy-4.0.0.zip",
-                "reference": "4.0.0",
-                "shasum": "ed55a1441bc7fad0dcb0aea7d2bfecc88a156c83"
+                "url": "https://ftp.drupal.org/files/projects/password_policy-4.0.1.zip",
+                "reference": "4.0.1",
+                "shasum": "a132988f77d02c28d5c0f8f6c84a2d37eaa36c1f"
             },
             "require": {
                 "drupal/core": "^9.1 || ^10"
@@ -2921,8 +2921,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.0",
-                    "datestamp": "1668191689",
+                    "version": "4.0.1",
+                    "datestamp": "1712532453",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2996,7 +2996,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.12",
-                    "datestamp": "1696776683",
+                    "datestamp": "1712319355",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

@@ -28,7 +28,7 @@ third_party_settings:
       weight: 0
       format_type: tabs
       format_settings:
-        classes: ''
+        classes: tabs-composable-components
         show_empty_fields: false
         id: ''
         direction: horizontal
@@ -39,7 +39,7 @@ third_party_settings:
         - field_show_title
         - field_image
         - field_summary
-      label: Basic
+      label: Info
       region: content
       parent_name: group_tabs
       weight: 20
@@ -51,6 +51,7 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+        open: false
     group_components:
       children:
         - field_components
@@ -66,6 +67,7 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+        open: false
     group_metatag:
       children:
         - field_metatag
@@ -81,6 +83,7 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+        open: false
 _core:
   default_config_hash: SfpLhPExzvR0MgFp0Wp7CrmgEnhcqQ-fXIWFhbf4ue0
 id: node.page.default
@@ -96,14 +99,14 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 4
+    weight: 5
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       closed_mode: summary
-      autocollapse: none
+      autocollapse: all
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
@@ -111,7 +114,8 @@ content:
       features:
         add_above: '0'
         collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
+        convert: '0'
+        duplicate: '0'
     third_party_settings: {  }
   field_image:
     type: media_library_widget

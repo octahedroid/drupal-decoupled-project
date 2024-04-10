@@ -1,0 +1,8 @@
+framework: remix
+disable_styles: true
+open_load: true
+wrapper:
+  selector: null
+  type: none
+  mode: none
+  position: '0'
