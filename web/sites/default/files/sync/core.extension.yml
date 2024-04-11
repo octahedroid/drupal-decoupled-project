@@ -76,6 +76,8 @@ module:
   views_ui: 0
   pathauto: 1
   views: 10
+  visual_editor: 10
+  visual_editor_paragraphs: 10
   paragraphs: 11
   standard: 1000
 theme:

@@ -28,7 +28,7 @@ third_party_settings:
       weight: 0
       format_type: tabs
       format_settings:
-        classes: tabs-composable-components
+        classes: tabs-components
         show_empty_fields: false
         id: ''
         direction: horizontal

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76b21a4c0203391280ce5cc28a6ba0ea",
+    "content-hash": "c6ffb0a97bd23faaec2c05d9391db099",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3431,6 +3431,54 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/viewfield",
                 "issues": "https://www.drupal.org/project/issues/viewfield"
+            }
+        },
+        {
+            "name": "drupal/visual_editor",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/visual_editor.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/visual_editor-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "a0a80fe31e995925c21589786e4940673c84a69b"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || 11",
+                "drupal/decoupled_preview_iframe": "*"
+            },
+            "require-dev": {
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1712825076",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jmolivas",
+                    "homepage": "https://www.drupal.org/user/678770"
+                }
+            ],
+            "description": "Drupal Visual Editor",
+            "homepage": "https://www.drupal.org/project/visual_editor",
+            "support": {
+                "source": "https://git.drupalcode.org/project/visual_editor"
             }
         },
         {
