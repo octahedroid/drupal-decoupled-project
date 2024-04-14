@@ -1,0 +1,4 @@
+name: graphql_example
+type: profile
+description: ''
+core_version_requirement: '>=10'

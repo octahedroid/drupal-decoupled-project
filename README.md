@@ -13,17 +13,29 @@ git clone git@github.com:octahedroid/drupal-graphql-example.git
 ```bash
 ddev start
 ```
-
+<!--
 ### Import Database dump from demo example
 
 ```bash
 ddev import-db --file=db.sql.gz
-```
+``` -->
 
 ### Install dependencies using composer
 
 ```bash
 ddev composer install
+```
+
+### Install Drupal site
+
+```bash
+ddev drush site:install graphql_example -y
+```
+
+### Import content
+
+```
+ddev drush content:import profiles/graphql_example/assets/content.zip
 ```
 
 ### Login using drush
@@ -33,8 +45,6 @@ ddev drush uli admin
 ```
 
 ### Configure Simple OAuth Settings
-
-Generate keys visiting `admin/config/people/simple_oauth` we suggest you to use `../` on the directory field at the overlay window.
 
 You can reuse the previously generated Consumers currently at the site, or you can created new Consumers if this is the case, make sure you and assign the proper Scope of `Viewer` & `Previewer` depending on the usage you are planing to give to each one.
 
