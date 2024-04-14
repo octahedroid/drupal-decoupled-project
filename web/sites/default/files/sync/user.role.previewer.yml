@@ -13,6 +13,7 @@ weight: -6
 is_admin: null
 permissions:
   - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'view all revisions'
   - 'view any unpublished content'
   - 'view graphql_compose_preview entity'
   - 'view own unpublished content'

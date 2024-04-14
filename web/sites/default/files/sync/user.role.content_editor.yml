@@ -2,11 +2,17 @@ uuid: dd7d8022-b522-422f-ba99-717ec87e8658
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
   module:
+    - filter
     - graphql_compose_preview
 id: content_editor
 label: 'Content Editor'
 weight: -8
 is_admin: null
 permissions:
+  - 'use text format basic_html'
+  - 'use text format full_html'
   - 'view graphql_compose_preview entity'
