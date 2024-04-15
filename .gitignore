@@ -10,8 +10,7 @@
 !/web/sites/*/services.yml
 
 # Ignore paths that contain user-generated content.
-# Do not ignore files or directories to share user-generated content for demo purposes
-/web/sites/*/files
+/web/sites/*/files/*
 /web/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
