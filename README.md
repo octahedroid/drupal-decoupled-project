@@ -13,12 +13,6 @@ git clone git@github.com:octahedroid/drupal-graphql-example.git
 ```bash
 ddev start
 ```
-<!--
-### Import Database dump from demo example
-
-```bash
-ddev import-db --file=db.sql.gz
-``` -->
 
 ### Install dependencies using composer
 
@@ -46,9 +40,9 @@ ddev drush uli admin
 
 ### Configure Simple OAuth Settings
 
-You can reuse the previously generated Consumers at the site by visiting `admin/config/services/consumer` and editing the consumers labeled as `Viewer` & `Previewer` and assigning them a secret value.
+You can reuse the previously generated Consumers at the site by visiting `admin/config/services/consumer` to edit the consumers labeled as `Viewer` & `Previewer` and assigning them a secret value.
 
-If you prefer you can created new Consumers is this case, make sure you assign the `editor` user and the proper Scope of `Viewer` & `Previewer` depending on the usage you are planing to give to each one.
+If you prefer you can created new Consumers is this case, make sure you assign the `editor` user and the proper scope of `Viewer` & `Previewer` depending on the usage you are planing to give to each one.
 
 > Make sure you remember the values used as secret on each Consumer because you will need them as env variables for the front-end configuration.
 
