@@ -20,15 +20,15 @@ ddev start
 ddev composer install
 ```
 
-### Install Drupal site
+### Install Drupal site using drush
 
 ```bash
 ddev drush site:install graphql_example -y
 ```
 
-### Import content
+### Import content using drush
 
-```
+```bash
 ddev drush content:import profiles/graphql_example/assets/content.zip
 ```
 
