@@ -11,16 +11,11 @@
 
 # Ignore paths that contain user-generated content.
 # Do not ignore files or directories to share user-generated content for demo purposes
-# /web/sites/*/files
-# /web/sites/*/private
-
-# Ignore certain paths that contain user-generated content.
-/web/sites/*/files/php/*
-/web/sites/*/files/styles/*
+/web/sites/*/files
+/web/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
 /web/sites/simpletest
-
 
 # Ignore custom modules managed by Composer.
 #
@@ -103,3 +98,4 @@
 
 # Ignore .key files as they are privated
 *.key
+*.sql.gz

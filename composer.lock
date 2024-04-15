@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e22d31819990c5b7073a7f937f87acb6",
+    "content-hash": "e392bae6febd4045ef262f09687c4c6d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2680,6 +2680,56 @@
             }
         },
         {
+            "name": "drupal/install_profile_generator",
+            "version": "4.0.0-alpha3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/install_profile_generator.git",
+                "reference": "4.0.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/install_profile_generator-4.0.0-alpha3.zip",
+                "reference": "4.0.0-alpha3",
+                "shasum": "31a491f8498ccc3b43ce134b73d1d32bb82910ca"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10",
+                "drush/drush": "^11 || ^12",
+                "php": ">=8.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0-alpha3",
+                    "datestamp": "1690713439",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "alexpott",
+                    "homepage": "https://www.drupal.org/user/157725"
+                },
+                {
+                    "name": "Eli-T",
+                    "homepage": "https://www.drupal.org/user/516878"
+                }
+            ],
+            "description": "Provides a drush command to create an install profile from a site's current configuration",
+            "homepage": "https://www.drupal.org/project/install_profile_generator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/install_profile_generator"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "2.0.0",
             "source": {
@@ -3131,6 +3181,63 @@
             "homepage": "https://www.drupal.org/project/simple_oauth",
             "support": {
                 "source": "https://git.drupalcode.org/project/simple_oauth"
+            }
+        },
+        {
+            "name": "drupal/single_content_sync",
+            "version": "1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/single_content_sync.git",
+                "reference": "1.4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/single_content_sync-1.4.4.zip",
+                "reference": "1.4.4",
+                "shasum": "55194b9c2bd4f15dfb69d451fbef63740b68a8c5"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "ext-dom": "*",
+                "ext-zip": "*",
+                "php": ">=7.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.4.4",
+                    "datestamp": "1699421610",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Kuzava (nginex)",
+                    "homepage": "https://www.drupal.org/u/nginex",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "artycal",
+                    "homepage": "https://www.drupal.org/user/3708798"
+                },
+                {
+                    "name": "nginex",
+                    "homepage": "https://www.drupal.org/user/2822325"
+                }
+            ],
+            "description": "This is a simple way of exporting a single node to yml file with possibility to import it on another environment.",
+            "homepage": "https://drupal.org/project/single_content_sync",
+            "support": {
+                "source": "https://cgit.drupalcode.org/single_content_sync",
+                "issues": "https://drupal.org/project/issues/single_content_sync"
             }
         },
         {
@@ -8778,6 +8885,7 @@
         "drupal/gin": 5,
         "drupal/gin_toolbar": 5,
         "drupal/graphql_compose_preview": 10,
+        "drupal/install_profile_generator": 15,
         "drupal/viewfield": 10,
         "drupal/visual_editor": 20
     },

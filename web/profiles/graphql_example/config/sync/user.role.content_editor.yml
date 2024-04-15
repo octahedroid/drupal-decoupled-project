@@ -7,7 +7,6 @@ dependencies:
     - filter.format.full_html
   module:
     - filter
-    - graphql_compose_preview
 id: content_editor
 label: 'Content Editor'
 weight: -8
@@ -15,4 +14,3 @@ is_admin: null
 permissions:
   - 'use text format basic_html'
   - 'use text format full_html'
-  - 'view graphql_compose_preview entity'

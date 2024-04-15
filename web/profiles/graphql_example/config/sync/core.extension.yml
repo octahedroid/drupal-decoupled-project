@@ -62,6 +62,7 @@ module:
   serialization: 0
   shortcut: 0
   simple_oauth: 0
+  single_content_sync: 0
   subpathauto: 0
   system: 0
   taxonomy: 0
@@ -79,9 +80,9 @@ module:
   visual_editor: 10
   visual_editor_paragraphs: 10
   paragraphs: 11
-  standard: 1000
+  graphql_example: 1000
 theme:
   olivero: 0
   claro: 0
   gin: 0
-profile: standard
+profile: graphql_example

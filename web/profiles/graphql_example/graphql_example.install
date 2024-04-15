@@ -1,0 +1,84 @@
+<?php
+
+use Drupal\Component\Utility\Crypt;
+
+/**
+ * Implements hook_install_tasks().
+ */
+function graphql_example_install_tasks(&$install_state) {
+  $tasks = [
+    // Users tasks.
+    'graphql_example_tasks_users' => [],
+    // Create consumers and keys.
+    'graphql_example_tasks_simple_oauth' => [],
+    // Import Content tasks.
+    // 'graphql_example_tasks_content' => [],
+  ];
+
+  return $tasks;
+}
+
+/**
+ * Callback function to add users.
+ *
+ * @see graphql_example_tasks_users()
+ */
+function graphql_example_tasks_users() {
+  $userStorage = \Drupal::entityTypeManager()->getStorage('user');
+  $admin = $userStorage->load(1);
+  $admin->name = 'admin';
+  $admin->mail = 'admin@example.org';
+  $admin->roles[] = 'administrator';
+  $admin->save();
+
+  $editor = $userStorage->create([
+    'name'     => 'editor',
+    'pass' => 'editor',
+    'mail'      => 'editor@example.org',
+    'status' => 1,
+    'roles' => ['content_editor'],
+  ]);
+  $editor->save();
+
+  node_access_rebuild();
+}
+/**
+ * Callback function to install content.
+ *
+ * @see graphql_example_tasks_simple_oauth()
+ */
+function graphql_example_tasks_simple_oauth() {
+  $consumerStorage = \Drupal::entityTypeManager()->getStorage('consumer');
+  $consumerStorage->create([
+    'client_id' => Crypt::randomBytesBase64(),
+    'client_secret ' => 'previewer',
+    'label' => 'Previewer',
+    'user_id' => 2,
+    'third_party' => TRUE,
+    'is_default' => FALSE,
+    'roles' => ['previewer'],
+  ])->save();
+
+  $consumerStorage->create([
+    'client_id' => Crypt::randomBytesBase64(),
+    'client_secret ' => 'viewer',
+    'label' => 'Viewer',
+    'user_id' => 2,
+    'third_party' => TRUE,
+    'is_default' => FALSE,
+    'roles' => ['viewer'],
+  ])->save();
+
+  \Drupal::service('simple_oauth.key.generator')->generateKeys('../');
+}
+
+// /**
+//  * Callback function to install content.
+//  *
+//  * @see graphql_example_tasks_content()
+//  */
+// // function graphql_example_tasks_content() {
+// function graphql_example_tasks_content() {
+//   $contentFile =  \Drupal::service('extension.list.profile')->getPath('graphql_example') . '/assets/content.zip';
+//   \Drupal::service('single_content_sync.importer')->importFromZip($contentFile);
+// }

@@ -1,0 +1,4 @@
+name: 'Demo: Drupal GraphQL'
+type: profile
+description: 'Install a fully functional Drupal Decoupled Integration pre-configured with GraphQL.'
+core_version_requirement: '>=10'
