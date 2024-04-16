@@ -28,9 +28,13 @@ ddev drush site:install graphql_example -y
 
 ### Import content using drush
 
+Installation process takes care of importing content, but you may want to import it again, if that is your case you can use this drush command
+
 ```bash
 ddev drush content:import profiles/graphql_example/assets/content.zip
 ```
+
+If you are not familiar with the CLI you can visit `admin/content/import` and upload the content file located at `web/profiles/graphql_example/assets/content.zip`
 
 ### Login using drush
 
