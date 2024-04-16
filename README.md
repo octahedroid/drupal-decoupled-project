@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [DDEV](https://ddev.readthedocs.io/)
+- [DDEV](https://ddev.com/)
 
 ## Getting Started
 
