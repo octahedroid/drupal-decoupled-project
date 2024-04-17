@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e392bae6febd4045ef262f09687c4c6d",
+    "content-hash": "40968843a1bfb6cccaf5a4dc6e5dd5fc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -863,6 +863,54 @@
                 "source": "https://github.com/consolidation/site-process/tree/5.4.0"
             },
             "time": "2024-04-06T00:00:28+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0 || ~2.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
+            },
+            "time": "2022-12-20T22:53:13+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -2037,10 +2085,10 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
-                "reference": "c4933032f52f2e2a9c06ffe35f26a84ff2e07136"
+                "reference": "8ea38c916dbd3ed884b6db3bd54325f2aae189d9"
             },
             "require": {
-                "drupal/core": "^9 || ^10 || ^11"
+                "drupal/core": "^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
@@ -2048,8 +2096,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.0+2-dev",
-                    "datestamp": "1713125890",
+                    "version": "1.0.0+3-dev",
+                    "datestamp": "1713299875",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2058,7 +2106,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -2070,10 +2118,15 @@
                     "homepage": "https://www.drupal.org/user/678770"
                 }
             ],
-            "description": "Preview Drupal content from your decoupled front-end site, extending the node-view page embedding an Iframe with the content of your FE application.",
+            "description": "Preview Drupal content from your decoupled front-end site via an Iframe with the content from your FE application.",
             "homepage": "https://www.drupal.org/project/decoupled_preview_iframe",
+            "keywords": [
+                "Decoupled",
+                "Drupal"
+            ],
             "support": {
-                "source": "https://git.drupalcode.org/project/decoupled_preview_iframe"
+                "source": "https://git.drupalcode.org/project/decoupled_preview_iframe",
+                "issues": "https://www.drupal.org/project/issues/decoupled_preview_iframe"
             }
         },
         {
@@ -3539,7 +3592,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/visual_editor.git",
-                "reference": "41e1d67a4acc37116002bb7fce78ce83147ba780"
+                "reference": "b9ba5ca07871357a6e3316e300f5258eced4f89e"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
@@ -3555,8 +3608,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.1+5-dev",
-                    "datestamp": "1713196822",
+                    "version": "1.0.2+2-dev",
+                    "datestamp": "1713300740",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
