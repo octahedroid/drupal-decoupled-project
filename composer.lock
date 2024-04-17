@@ -2085,7 +2085,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
-                "reference": "8ea38c916dbd3ed884b6db3bd54325f2aae189d9"
+                "reference": "ecbd73d74b635dd48cf31ad150397fa6ed1ca9c1"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -2096,8 +2096,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.0+3-dev",
-                    "datestamp": "1713299875",
+                    "version": "1.0.0+4-dev",
+                    "datestamp": "1713333802",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -3592,7 +3592,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/visual_editor.git",
-                "reference": "b9ba5ca07871357a6e3316e300f5258eced4f89e"
+                "reference": "b0f226883968d462aa9a707b4bd393dc5e83be0b"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
@@ -3608,8 +3608,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.2+2-dev",
-                    "datestamp": "1713300740",
+                    "version": "1.0.2+4-dev",
+                    "datestamp": "1713333765",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -8946,5 +8946,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }
