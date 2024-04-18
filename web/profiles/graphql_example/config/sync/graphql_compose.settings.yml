@@ -4,6 +4,7 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+      routes_enabled: true
   menu:
     main:
       enabled: true
@@ -53,6 +54,7 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+      routes_enabled: true
   user:
     user:
       enabled: true
@@ -202,12 +204,7 @@ paragraph:
     enabled: true
     query_load_enabled: true
     edges_enabled: true
-taxonomy_term:
-  tags:
-    enabled: true
-    query_load_enabled: true
-    edges_enabled: true
-    routes_enabled: false
+taxonomy_term: {  }
 image_style:
   large:
     enabled: true

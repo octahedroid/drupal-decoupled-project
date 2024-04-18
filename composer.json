@@ -65,12 +65,6 @@
         "sort-packages": true
     },
     "extra": {
-        "enable-patching": true,
-        "patches": {
-            "drupal/single_content_sync": {
-                "Support full file-path on outputPath argument": "patches/single_content_sync-3441188.patch"
-            }
-        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
