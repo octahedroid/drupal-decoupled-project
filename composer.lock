@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b6f00b89278588b220062bbcb5a7d58",
+    "content-hash": "4ed41a867c83416330c8dac174d7573f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2085,7 +2085,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
-                "reference": "ecbd73d74b635dd48cf31ad150397fa6ed1ca9c1"
+                "reference": "837ee35793ad091532a16b6952db349fbd213359"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -2096,8 +2096,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.0+4-dev",
-                    "datestamp": "1713333802",
+                    "version": "1.0.1+1-dev",
+                    "datestamp": "1713733136",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2851,17 +2851,17 @@
         },
         {
             "name": "drupal/override_node_options",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/override_node_options.git",
-                "reference": "8.x-2.7"
+                "reference": "8.x-2.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/override_node_options-8.x-2.7.zip",
-                "reference": "8.x-2.7",
-                "shasum": "2354c6164b5a5fcfec0b36be73606ae3f6869a97"
+                "url": "https://ftp.drupal.org/files/projects/override_node_options-8.x-2.8.zip",
+                "reference": "8.x-2.8",
+                "shasum": "79ad92c63e4dfc03bed74438bcf9df437ad2bca5"
             },
             "require": {
                 "drupal/core": "^9 || ^10"
@@ -2869,8 +2869,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.7",
-                    "datestamp": "1676800639",
+                    "version": "8.x-2.8",
+                    "datestamp": "1713475051",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3592,7 +3592,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/visual_editor.git",
-                "reference": "b0f226883968d462aa9a707b4bd393dc5e83be0b"
+                "reference": "e53f4b8e8e0d53b8e1a4f80a8166a855aec549f0"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
@@ -3608,8 +3608,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.2+4-dev",
-                    "datestamp": "1713333765",
+                    "version": "1.0.3+2-dev",
+                    "datestamp": "1713741158",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
