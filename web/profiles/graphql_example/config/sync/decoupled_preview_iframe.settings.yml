@@ -1,8 +1,11 @@
-node_types:
-  article: true
-  page: true
-route_sync:
-  type: DECOUPLED_PREVIEW_IFRAME_ROUTE_SYNC
+route_sync: DECOUPLED_PREVIEW_IFRAME_ROUTE_SYNC
+draft_provider: graphql_compose_preview
 preview_url: 'http://localhost:8080'
-draft:
-  provider: graphql_compose_preview
+preview_types:
+  node:
+    article: article
+    page: page
+  media:
+    image: image
+  taxonomy_term:
+    tags: tags
