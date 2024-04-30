@@ -142,6 +142,7 @@ settings:
   site_name: false
   site_slogan: false
   site_front: true
+  fragments_enabled: false
 node:
   article:
     enabled: true
