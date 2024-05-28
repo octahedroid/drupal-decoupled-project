@@ -53,9 +53,12 @@ function graphql_example_tasks_users() {
 function graphql_example_tasks_simple_oauth() {
   $random = new Random();
   $consumerStorage = \Drupal::entityTypeManager()->getStorage('consumer');
+
+  $previewerClientId = Crypt::randomBytesBase64();
+  $previewerClientSecret = $random->word(8);
   $consumerStorage->create([
-    'client_id' => Crypt::randomBytesBase64(),
-    'client_secret ' => $random->string(),
+    'client_id' => $previewerClientId,
+    'client_secret ' => $previewerClientSecret,
     'label' => 'Previewer',
     'user_id' => 2,
     'third_party' => TRUE,
@@ -63,9 +66,11 @@ function graphql_example_tasks_simple_oauth() {
     'roles' => ['previewer'],
   ])->save();
 
+  $viewerClientId = Crypt::randomBytesBase64();
+  $viewerClientSecret = $random->word(8);
   $consumerStorage->create([
-    'client_id' => Crypt::randomBytesBase64(),
-    'client_secret ' => $random->string(),
+    'client_id' => $viewerClientId,
+    'client_secret ' => $viewerClientSecret,
     'label' => 'Viewer',
     'user_id' => 2,
     'third_party' => TRUE,
@@ -74,6 +79,19 @@ function graphql_example_tasks_simple_oauth() {
   ])->save();
 
   \Drupal::service('simple_oauth.key.generator')->generateKeys('../');
+
+  echo PHP_EOL;
+  echo " Consumers created successfully. Please save the following credentials." . PHP_EOL;
+
+  echo " --- Previewer ---" . PHP_EOL;
+  echo " DRUPAL_CLIENT_ID=$previewerClientId" . PHP_EOL;
+  echo " DRUPAL_CLIENT_SECRET=$previewerClientSecret" . PHP_EOL;
+
+  echo " --- Viewer ---" . PHP_EOL;
+  echo " DRUPAL_CLIENT_ID=$viewerClientId" . PHP_EOL;
+  echo " DRUPAL_CLIENT_SECRET=$viewerClientSecret" . PHP_EOL;
+
+  echo PHP_EOL;
 }
 
 /**
