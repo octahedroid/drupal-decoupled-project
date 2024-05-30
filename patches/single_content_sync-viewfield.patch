@@ -1,0 +1,12 @@
+diff --git a/src/Plugin/Derivative/SingleContentSyncFieldProcessor/SimpleFieldDeriver.php b/src/Plugin/Derivative/SingleContentSyncFieldProcessor/SimpleFieldDeriver.php
+index cf2daec..b78b998 100644
+--- a/src/Plugin/Derivative/SingleContentSyncFieldProcessor/SimpleFieldDeriver.php
++++ b/src/Plugin/Derivative/SingleContentSyncFieldProcessor/SimpleFieldDeriver.php
+@@ -39,6 +39,7 @@ class SimpleFieldDeriver extends DeriverBase {
+       'telephone',
+       'text',
+       'timestamp',
++      'viewfield',
+       'viewsreference',
+       'weight',
+       'yearonly',

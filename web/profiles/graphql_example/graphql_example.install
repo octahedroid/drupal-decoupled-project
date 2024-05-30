@@ -100,6 +100,7 @@ function graphql_example_tasks_simple_oauth() {
  * @see graphql_example_tasks_content()
  */
 function graphql_example_tasks_content() {
+  // Import content from the zip file.
   $contentFile = \Drupal::service('extension.list.profile')->getPath('graphql_example') . '/assets/content.zip';
   \Drupal::service('single_content_sync.importer')->importFromZip($contentFile);
 
@@ -111,4 +112,18 @@ function graphql_example_tasks_content() {
   if (is_callable('drush_backend_batch_process')) {
     drush_backend_batch_process();
   }
+
+  // Assign the avatar to the editor user.
+  $media = reset(\Drupal::entityTypeManager()
+  ->getStorage('media')
+  ->loadByProperties(
+    [
+      'field_media_image.entity:file.filename' => 'doc-tahedroid-avatar.png',
+    ]
+  ));
+
+  $userStorage = \Drupal::entityTypeManager()->getStorage('user');
+  $editor = reset($userStorage->loadByProperties(['name' => 'editor']));
+  $editor->field_picture->entity = $media;
+  $editor->save();
 }
