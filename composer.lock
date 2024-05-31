@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ed41a867c83416330c8dac174d7573f",
+    "content-hash": "4b9568edc550ccde8e6c89f6f67650af",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2085,7 +2085,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
-                "reference": "460c58e599092679611906d4cdaed952028a4b94"
+                "reference": "29dbac25f5520510a68d47e1bb4fde07c01c0edd"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -2096,8 +2096,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.2+1-dev",
-                    "datestamp": "1716880524",
+                    "version": "1.0.3+2-dev",
+                    "datestamp": "1717107792",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
