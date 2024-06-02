@@ -80,18 +80,28 @@ function graphql_example_tasks_simple_oauth() {
 
   \Drupal::service('simple_oauth.key.generator')->generateKeys('../');
 
-  echo PHP_EOL;
-  echo " Consumers created successfully. Please save the following credentials." . PHP_EOL;
+  $messages = [
+    'Consumers created successfully. Please save the following credentials.',
+    '--- Previewer ---',
+    'DRUPAL_CLIENT_ID=' . $previewerClientId,
+    'DRUPAL_CLIENT_SECRET=' . $previewerClientSecret,
+    '--- Viewer ---',
+    'DRUPAL_CLIENT_ID=' . $viewerClientId,
+    'DRUPAL_CLIENT_SECRET=' . $viewerClientSecret,
+  ];
 
-  echo " --- Previewer ---" . PHP_EOL;
-  echo " DRUPAL_CLIENT_ID=$previewerClientId" . PHP_EOL;
-  echo " DRUPAL_CLIENT_SECRET=$previewerClientSecret" . PHP_EOL;
+  if (PHP_SAPI === 'cli') {
+    echo PHP_EOL;
+    foreach ($messages as $message) {
+      echo $message . PHP_EOL;
+    }
+    echo PHP_EOL;
+  } else {
 
-  echo " --- Viewer ---" . PHP_EOL;
-  echo " DRUPAL_CLIENT_ID=$viewerClientId" . PHP_EOL;
-  echo " DRUPAL_CLIENT_SECRET=$viewerClientSecret" . PHP_EOL;
-
-  echo PHP_EOL;
+    foreach ($messages as $message) {
+      \Drupal::messenger()->addWarning($message);
+    }
+  }
 }
 
 /**
@@ -114,16 +124,18 @@ function graphql_example_tasks_content() {
   }
 
   // Assign the avatar to the editor user.
-  $media = reset(\Drupal::entityTypeManager()
-  ->getStorage('media')
-  ->loadByProperties(
-    [
-      'field_media_image.entity:file.filename' => 'doc-tahedroid-avatar.png',
-    ]
-  ));
+  $meadiaItems = \Drupal::entityTypeManager()
+    ->getStorage('media')
+    ->loadByProperties(
+      [
+        'field_media_image.entity:file.filename' => 'doc-tahedroid-avatar.png',
+      ]
+    );
+  $media = reset($meadiaItems);
 
   $userStorage = \Drupal::entityTypeManager()->getStorage('user');
-  $editor = reset($userStorage->loadByProperties(['name' => 'editor']));
+  $editorItems = $userStorage->loadByProperties(['name' => 'editor']);
+  $editor = reset($editorItems);
   $editor->field_picture->entity = $media;
   $editor->save();
 }

@@ -3608,7 +3608,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/visual_editor.git",
-                "reference": "2cda1fb44803420ceb8fd6c849b91b49376eb2c9"
+                "reference": "fb084b1b400e49fdb19187cfc415224cb0339727"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
@@ -3624,8 +3624,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.5+2-dev",
-                    "datestamp": "1716877880",
+                    "version": "1.0.6+1-dev",
+                    "datestamp": "1717206213",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
