@@ -58,7 +58,9 @@ ddev drush uli admin
 
 ### Configuring Simple OAuth Settings
 
-You can reuse the previously generated Consumers at the site by visiting `admin/config/services/consumer` to edit the consumers labeled as `Viewer` & `Previewer` and assigning them a secret value.
+- You can use the previously generated `DRUPAL_CLIENT_ID` and `DRUPAL_CLIENT_SECRET` values shown on the CLI or as a warning message.
+
+- You can reuse the previously generated Consumers at the site by visiting `admin/config/services/consumer` to edit the consumers labeled as `Viewer` & `Previewer` and assigning them a new secret value.
 
 If you prefer you can created new Consumers is this case, make sure you assign the `editor` user and the proper scope of `Viewer` & `Previewer` depending on the usage you are planing to give to each one.
 

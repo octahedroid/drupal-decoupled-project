@@ -1,7 +1,2 @@
 disable_styles: true
 open_load: true
-wrapper:
-  type: tab
-  mode: horizontal
-  selector: .tabs-components
-  position: '2'
