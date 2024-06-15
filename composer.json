@@ -72,6 +72,9 @@
         "patches": {
             "drupal/single_content_sync": {
                 "Add support for viewfield": "patches/single_content_sync-viewfield.patch"
+            },
+            "drupal/paragraphs": {
+                "Add uuid to table row": "patches/paragraphs-add-uuid-to-table-row.patch"
             }
         },
         "drupal-scaffold": {
