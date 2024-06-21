@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b9568edc550ccde8e6c89f6f67650af",
+    "content-hash": "8dd40129017b8298922fe0fcca5a8b31",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2323,27 +2323,27 @@
         },
         {
             "name": "drupal/gin",
-            "version": "3.0.0-rc10",
+            "version": "3.0.0-rc11",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin.git",
-                "reference": "8.x-3.0-rc10"
+                "reference": "8.x-3.0-rc11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc10.zip",
-                "reference": "8.x-3.0-rc10",
-                "shasum": "f79fd895dd1f16c3af457bfaed5527f5b5bc752c"
+                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc11.zip",
+                "reference": "8.x-3.0-rc11",
+                "shasum": "532000cb8497412fb4b26efc362c7fc9efc44546"
             },
             "require": {
-                "drupal/core": "^9 || ^10",
+                "drupal/core": "^9 || ^10 || ^11",
                 "drupal/gin_toolbar": "^1.0@beta"
             },
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-rc10",
-                    "datestamp": "1712686345",
+                    "version": "8.x-3.0-rc11",
+                    "datestamp": "1718354743",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -2385,17 +2385,17 @@
         },
         {
             "name": "drupal/gin_login",
-            "version": "2.0.4",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin_login.git",
-                "reference": "2.0.4"
+                "reference": "2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin_login-2.0.4.zip",
-                "reference": "2.0.4",
-                "shasum": "7b67b50ebba7e69ec690e1f2557fdbae431d4638"
+                "url": "https://ftp.drupal.org/files/projects/gin_login-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "70e826a3fe80cdee5adf1ae1efa0e0b163d1e24a"
             },
             "require": {
                 "drupal/core": "^8.9 || ^9 || ^10 || ^11"
@@ -2403,8 +2403,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.4",
-                    "datestamp": "1712687134",
+                    "version": "2.1.1",
+                    "datestamp": "1718385917",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2444,26 +2444,26 @@
         },
         {
             "name": "drupal/gin_toolbar",
-            "version": "1.0.0-rc5",
+            "version": "1.0.0-rc6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin_toolbar.git",
-                "reference": "8.x-1.0-rc5"
+                "reference": "8.x-1.0-rc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin_toolbar-8.x-1.0-rc5.zip",
-                "reference": "8.x-1.0-rc5",
-                "shasum": "523b565244440a16fa447065a98841770992bd2e"
+                "url": "https://ftp.drupal.org/files/projects/gin_toolbar-8.x-1.0-rc6.zip",
+                "reference": "8.x-1.0-rc6",
+                "shasum": "542def14b9a5435efb4e021d384fa3f7b0fc6e78"
             },
             "require": {
-                "drupal/core": "^9 || ^10"
+                "drupal/core": "^9 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc5",
-                    "datestamp": "1702727588",
+                    "version": "8.x-1.0-rc6",
+                    "datestamp": "1718368950",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -2577,43 +2577,56 @@
         },
         {
             "name": "drupal/graphql_compose",
-            "version": "2.1.0-beta1",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/graphql_compose.git",
-                "reference": "2.1.0-beta1"
+                "reference": "2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/graphql_compose-2.1.0-beta1.zip",
-                "reference": "2.1.0-beta1",
-                "shasum": "d6740dbf791562f4f86d29fc1fcaabf20294cf05"
+                "url": "https://ftp.drupal.org/files/projects/graphql_compose-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "d25434d2fad105494fef648e4d5cefa1b878660e"
             },
             "require": {
                 "doctrine/inflector": "^2",
                 "drupal/core": "^9.5 || ^10",
-                "drupal/graphql": "^4.6",
+                "drupal/graphql": "^4.7",
                 "php": "^8.1",
                 "symfony/string": "^6"
             },
             "require-dev": {
+                "drupal/address": "^1",
+                "drupal/block_field": "^1",
                 "drupal/core-layout_builder": "*",
-                "drupal/eck": "*",
+                "drupal/double_field": "^4",
+                "drupal/dynamic_entity_reference": "^3",
+                "drupal/eck": "^2",
+                "drupal/geofield": "^1",
                 "drupal/graphql_compose_blocks": "*",
                 "drupal/graphql_compose_edges": "*",
                 "drupal/graphql_compose_layouts": "*",
                 "drupal/graphql_compose_routes": "*",
-                "drupal/layout_paragraphs": "*",
-                "drupal/metatag": "*"
+                "drupal/layout_paragraphs": "^2",
+                "drupal/menu_item_extras": "^3",
+                "drupal/metatag": "^2",
+                "drupal/paragraphs": "^1",
+                "drupal/redirect": "^1",
+                "drupal/schema_metatag": "^3",
+                "drupal/search_api": "^1",
+                "drupal/svg_image": "^3",
+                "drupal/token": "^1",
+                "drupal/viewfield": "^3"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0-beta1",
-                    "datestamp": "1707026702",
+                    "version": "2.1.1",
+                    "datestamp": "1716420512",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3608,7 +3621,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/visual_editor.git",
-                "reference": "fb084b1b400e49fdb19187cfc415224cb0339727"
+                "reference": "1be971345591eac0ef4b48ce77d01c726948b6ff"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
@@ -3624,8 +3637,8 @@
                     "dev-1.0.x": "1.0.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.6+1-dev",
-                    "datestamp": "1717206213",
+                    "version": "1.0.8+2-dev",
+                    "datestamp": "1718492580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -8959,7 +8972,6 @@
         "drupal/decoupled_preview_iframe": 20,
         "drupal/gin": 5,
         "drupal/gin_toolbar": 5,
-        "drupal/graphql_compose_preview": 10,
         "drupal/install_profile_generator": 15,
         "drupal/viewfield": 10,
         "drupal/visual_editor": 20
