@@ -136,12 +136,13 @@ field_config:
         enabled: true
 settings:
   expose_entity_ids: false
-  schema_description: Remix
+  schema_description: Decoupled
   schema_version: '1'
   simple_unions: true
   site_name: false
   site_slogan: false
-  site_front: true
+  site_front: false
+  custom: {  }
   fragments_enabled: false
 node:
   article:
