@@ -82,6 +82,7 @@
                 "web-root": "web/"
             }
         },
+        "installer-types": ["drupal-recipe"],
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
@@ -109,6 +110,9 @@
             ],
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
+            ],
+            "web/recipies/custom/{$name}": [
+                "type:drupal-recipe"
             ]
         },
         "drupal-core-project-message": {

@@ -870,4 +870,4 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
 $config['system.logging']['error_level'] = 'none';
 
 // Override the default config sync directory.
-$settings['config_sync_directory'] = 'profiles/graphql_example/config/sync';
+// $settings['config_sync_directory'] = 'profiles/graphql_example/config/sync';

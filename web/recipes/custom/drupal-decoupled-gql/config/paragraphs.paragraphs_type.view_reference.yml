@@ -1,0 +1,10 @@
+uuid: 31491ec0-32f5-44e5-a663-898c49dd8f73
+langcode: en
+status: true
+dependencies: {  }
+id: view_reference
+label: 'View Reference'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

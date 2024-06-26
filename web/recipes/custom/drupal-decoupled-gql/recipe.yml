@@ -1,0 +1,128 @@
+name: 'Drupal Decoupled'
+description: 'Drupal installation ready to make decoupled sites usgin GraphQL'
+type: 'Site'
+
+install:
+  - admin_toolbar
+  - gin
+  - gin_login
+  - gin_toolbar
+  - paragraphs
+  - admin_toolbar_search
+  - admin_toolbar_tools
+  - automated_cron
+  - big_pipe
+  - block
+  - block_content
+  - breakpoint
+  - ckeditor5
+  - coffee
+  - config
+  - consumers
+  - contextual
+  - datetime
+  - dblog
+  - decoupled_preview_iframe
+  - dynamic_entity_reference
+  - dynamic_page_cache
+  - editor
+  - entity_reference_revisions
+  - field
+  - field_group
+  - field_ui
+  - file
+  - filter
+  - gin_login
+  - gin_toolbar
+  - graphql
+  - graphql_compose
+  - graphql_compose_edges
+  - graphql_compose_image_style
+  - graphql_compose_menus
+  - graphql_compose_metatags
+  - graphql_compose_preview
+  - graphql_compose_routes
+  - graphql_compose_users
+  - graphql_compose_views
+  - help
+  - history
+  - image
+  - link
+  - media
+  - media_library
+  - menu_link_content
+  - menu_ui
+  - metatag
+  - metatag_open_graph
+  - metatag_twitter_cards
+  - mysql
+  - node
+  - options
+  - override_node_options
+  - page_cache
+  - path
+  - path_alias
+  - phpass
+  - redirect
+  - search
+  - serialization
+  - shortcut
+  - simple_oauth
+  - single_content_sync
+  - subpathauto
+  - system
+  - taxonomy
+  - text
+  - token
+  - toolbar
+  - typed_data
+  - update
+  - user
+  - view_unpublished
+  - viewfield
+  - views_ui
+  - pathauto
+  - views
+  - visual_editor
+  - visual_editor_paragraphs
+
+config:
+  import:
+    admin_toolbar: '*'
+    admin_toolbar_tools: '*'
+    # cloudflare_images: '*'
+    coffee: '*'
+    decoupled_preview_iframe: '*'
+    dynamic_entity_reference: '*'
+    field_group: '*'
+    gin:
+      - gin.settings
+      - block.block.gin_breadcrumbs
+      - block.block.gin_content
+      - block.block.gin_help
+      - block.block.gin_local_actions
+      - block.block.gin_messages
+      - block.block.gin_page_title
+      - block.block.gin_primary_local_tasks
+      - block.block.gin_secondary_local_tasks
+    gin_login: '*'
+    gin_toolbar: '*'
+    paragraphs: '*'
+    metatag: '*'
+    pathauto: '*'
+    visual_editor: '*'
+    graphql_compose: '*'
+    graphql_compose_preview: '*'
+    override_node_options: '*'
+    password_policy: '*'
+    redirect: '*'
+    simple_oauth: '*'
+    single_content_sync: '*'
+    subpathauto: '*'
+    view_unpublished: '*'
+    viewfield: '*'
+  actions:
+    system.theme:
+      simple_config_update:
+        admin: 'gin'
+        default: 'olivero'
