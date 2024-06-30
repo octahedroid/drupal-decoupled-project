@@ -5,7 +5,6 @@ dependencies:
   module:
     - file
     - media
-    - search
     - shortcut
     - system
 _core:
@@ -18,5 +17,4 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'delete own files'
-  - 'search content'
   - 'view media'
