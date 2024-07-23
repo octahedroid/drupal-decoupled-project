@@ -32,7 +32,6 @@
         "drupal/graphql_compose_preview": "^1.0",
         "drupal/install_profile_generator": "^4.0@alpha",
         "drupal/metatag": "^2.0",
-        "drupal/override_node_options": "^2.8",
         "drupal/paragraphs": "^1.17",
         "drupal/pathauto": "^1.12",
         "drupal/redirect": "^1.9",
