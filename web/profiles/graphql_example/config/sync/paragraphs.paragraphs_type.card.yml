@@ -1,10 +1,10 @@
-uuid: a742cce8-09a0-406f-87dd-85c33f6645c2
+uuid: c20fcdc6-1b77-4624-89a0-c8aa1a0fd42c
 langcode: en
 status: true
 dependencies: {  }
-id: hero_cta
-label: 'Hero CTA'
+id: card
+label: Card
 icon_uuid: null
 icon_default: null
-description: ''
+description: Lorem
 behavior_plugins: {  }

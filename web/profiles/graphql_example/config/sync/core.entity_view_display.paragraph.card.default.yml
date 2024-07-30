@@ -1,18 +1,18 @@
-uuid: 12f8e2f5-fd21-49e0-95d2-916240f5b64e
+uuid: b7c571ca-6792-4c65-b255-9729c8023a94
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.hero_cta.field_cta
-    - field.field.paragraph.hero_cta.field_intro
-    - field.field.paragraph.hero_cta.field_text
-    - field.field.paragraph.hero_cta.field_title
-    - paragraphs.paragraphs_type.hero_cta
+    - field.field.paragraph.card.field_cta
+    - field.field.paragraph.card.field_image
+    - field.field.paragraph.card.field_text
+    - field.field.paragraph.card.field_title
+    - paragraphs.paragraphs_type.card
   module:
     - link
-id: paragraph.hero_cta.default
+id: paragraph.card.default
 targetEntityType: paragraph
-bundle: hero_cta
+bundle: card
 mode: default
 content:
   field_cta:
@@ -27,11 +27,12 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_intro:
-    type: string
+  field_image:
+    type: entity_reference_entity_view
     label: above
     settings:
-      link_to_entity: false
+      view_mode: default
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content
@@ -48,6 +49,6 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
 hidden: {  }

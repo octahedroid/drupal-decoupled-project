@@ -1,9 +1,9 @@
-uuid: 48e164d3-fc72-4044-94bc-2758cc4aa74f
+uuid: c5a89ae0-b01b-4140-92a5-f10d8248df96
 langcode: en
 status: true
 dependencies: {  }
-id: hero_text
-label: 'Hero Text'
+id: hero
+label: Hero
 icon_uuid: null
 icon_default: null
 description: ''

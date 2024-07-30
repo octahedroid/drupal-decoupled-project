@@ -1,18 +1,18 @@
-uuid: 22f34cca-1afb-4268-b9c8-497b6fa833e6
+uuid: dba274ea-7ac4-4ef8-93fe-0ca33c103ccf
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_title
-    - paragraphs.paragraphs_type.hero_text
-id: paragraph.hero_text.field_title
+    - paragraphs.paragraphs_type.card_group
+id: paragraph.card_group.field_title
 field_name: field_title
 entity_type: paragraph
-bundle: hero_text
+bundle: card_group
 label: Title
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

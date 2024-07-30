@@ -1,0 +1,34 @@
+uuid: 372cb872-4580-4e32-b507-9dec1031d99d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.card
+  content:
+    - 'media:image:2d196377-f447-4bff-a582-2e18f373414b'
+id: paragraph.card.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: card
+label: Image
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 2d196377-f447-4bff-a582-2e18f373414b
+    weight: 0
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
