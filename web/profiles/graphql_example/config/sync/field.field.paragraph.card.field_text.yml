@@ -1,14 +1,14 @@
-uuid: 1ace7241-8bef-449a-a8c0-37f2a5e9a976
+uuid: 610d2095-9026-4f87-bc9d-ca0e1b7fc2f7
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_text
-    - paragraphs.paragraphs_type.hero_cta
-id: paragraph.hero_cta.field_text
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_text
 field_name: field_text
 entity_type: paragraph
-bundle: hero_cta
+bundle: card
 label: Text
 description: ''
 required: true

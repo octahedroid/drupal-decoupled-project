@@ -1,18 +1,18 @@
-uuid: 885514b1-e59a-4fb0-9833-3f353865c7e5
+uuid: 682acb4d-6e5f-4b6b-a0bd-ab41e02003a2
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_text
-    - paragraphs.paragraphs_type.hero_text
-id: paragraph.hero_text.field_text
+    - paragraphs.paragraphs_type.hero
+id: paragraph.hero.field_text
 field_name: field_text
 entity_type: paragraph
-bundle: hero_text
+bundle: hero
 label: Text
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

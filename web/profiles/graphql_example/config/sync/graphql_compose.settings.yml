@@ -1,14 +1,41 @@
 entity_config:
+  image_style:
+    large:
+      enabled: false
+    media_library:
+      enabled: false
+    medium:
+      enabled: false
+    thumbnail:
+      enabled: false
+    wide:
+      enabled: false
   media:
+    audio:
+      enabled: false
+    document:
+      enabled: false
     image:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+    remote_video:
+      enabled: false
+    video:
+      enabled: false
   menu:
+    account:
+      enabled: false
+    admin:
+      enabled: false
+    footer:
+      enabled: false
     main:
       enabled: true
       menu_route_enabled: true
+    tools:
+      enabled: false
   node:
     article:
       enabled: true
@@ -21,15 +48,19 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
   paragraph:
+    card:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    card_group:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
     code_block:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
-    hero_cta:
-      enabled: true
-      query_load_enabled: true
-      edges_enabled: true
-    hero_text:
+    hero:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -85,6 +116,20 @@ field_config:
       field_summary:
         enabled: true
   paragraph:
+    card:
+      field_cta:
+        enabled: true
+      field_image:
+        enabled: true
+      field_text:
+        enabled: true
+      field_title:
+        enabled: true
+    card_group:
+      field_items:
+        enabled: true
+      field_title:
+        enabled: true
     code_block:
       field_code:
         enabled: true
@@ -95,17 +140,8 @@ field_config:
       field_title:
         enabled: true
         name_sdl: titleOptional
-    hero_cta:
-      field_cta:
-        enabled: true
-      field_intro:
-        enabled: true
-      field_text:
-        enabled: true
-      field_title:
-        enabled: true
-    hero_text:
-      field_intro:
+    hero:
+      field_image:
         enabled: true
       field_text:
         enabled: true
@@ -183,14 +219,6 @@ media:
     routes_enabled: false
 paragraph:
   code_block:
-    enabled: true
-    query_load_enabled: true
-    edges_enabled: true
-  hero_cta:
-    enabled: true
-    query_load_enabled: true
-    edges_enabled: true
-  hero_text:
     enabled: true
     query_load_enabled: true
     edges_enabled: true
