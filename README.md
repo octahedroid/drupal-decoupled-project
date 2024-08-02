@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Visit the docs to see how to use this [Drupal](https://drupal-decoupled-docs.pages.dev/docs/examples/drupal-graphql) project.
+Visit the docs to see how to use this [Drupal](https://drupal-decoupled.octahedroid.com/docs/getting-started/examples/drupal-graphql) project.
 
 ## Supporting organizations
 
