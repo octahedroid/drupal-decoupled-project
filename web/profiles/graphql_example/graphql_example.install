@@ -2,11 +2,13 @@
 
 use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Random;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_install_tasks().
  */
-function graphql_example_install_tasks(&$install_state) {
+function graphql_example_install_tasks(&$install_state)
+{
   $tasks = [
     // Users tasks.
     'graphql_example_tasks_users' => [],
@@ -26,7 +28,8 @@ function graphql_example_install_tasks(&$install_state) {
  *
  * @see graphql_example_tasks_users()
  */
-function graphql_example_tasks_users() {
+function graphql_example_tasks_users()
+{
   $userStorage = \Drupal::entityTypeManager()->getStorage('user');
   $admin = $userStorage->load(1);
   $admin->name = 'admin';
@@ -50,7 +53,8 @@ function graphql_example_tasks_users() {
  *
  * @see graphql_example_tasks_simple_oauth()
  */
-function graphql_example_tasks_simple_oauth() {
+function graphql_example_tasks_simple_oauth()
+{
   $random = new Random();
   $consumerStorage = \Drupal::entityTypeManager()->getStorage('consumer');
 
@@ -78,7 +82,15 @@ function graphql_example_tasks_simple_oauth() {
     'roles' => ['viewer'],
   ])->save();
 
-  \Drupal::service('simple_oauth.key.generator')->generateKeys('../');
+  $directory = '../keys';
+
+  if (create_directory($directory)) {
+    echo 'Keys dir created succesfully' . PHP_EOL;
+  } else {
+    echo 'Failed to create directory' . PHP_EOL;
+  }
+
+  \Drupal::service('simple_oauth.key.generator')->generateKeys($directory);
 
   $messages = [
     'Consumers created successfully. Please save the following credentials.',
@@ -105,11 +117,28 @@ function graphql_example_tasks_simple_oauth() {
 }
 
 /**
+ * Helper function to create a directory
+ */
+function create_directory($directory)
+{
+  // Get the file system service.
+  $file_system = \Drupal::service('file_system');
+
+  // Check if the directory exists and create it if it doesn't.
+  if (!$file_system->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS)) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
  * Callback function to import content.
  *
  * @see graphql_example_tasks_content()
  */
-function graphql_example_tasks_content() {
+function graphql_example_tasks_content()
+{
   // Import content from the zip file.
   $contentFile = \Drupal::service('extension.list.profile')->getPath('graphql_example') . '/assets/content.zip';
   \Drupal::service('single_content_sync.importer')->importFromZip($contentFile);

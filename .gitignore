@@ -95,6 +95,8 @@
 # Ignore .env files as they are personal
 #/.env
 
-# Ignore .key files as they are privated
-*.key
+# Ignore keys directory as they are privated
+/keys
+
+#Ignore db dumps
 *.sql.gz
