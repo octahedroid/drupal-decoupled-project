@@ -1,0 +1,17 @@
+diff --git a/web/sites/default/settings.php b/web/sites/default/settings.php
+index 9e0b214..c7d2c2b 100644
+--- a/web/sites/default/settings.php
++++ b/web/sites/default/settings.php
+@@ -887,9 +887,9 @@
+  * Keep this code block at the end of this file to take full effect.
+  */
+ #
+-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+-#   include $app_root . '/' . $site_path . '/settings.local.php';
+-# }
++if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
++  include $app_root . '/' . $site_path . '/settings.local.php';
++}
+ $databases['default']['default'] = array (
+   'database' => 'tugboat',
+   'username' => 'tugboat',
