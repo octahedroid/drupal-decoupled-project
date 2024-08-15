@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Description: Installs Drupal Decoupled.
+# To know more visit https://drupal-decoupled.octahedroid.com/docs/
+
+## Start DDEV
+ddev start
+
+## Add drush
+ddev composer require drush/drush
+
+## Install Dependencies
+ddev composer install
+
+## Install Drupal
+ddev drush site:install minimal --verbose -y
+
+ddev composer config minimum-stability --merge --json "dev"
+
+## Update Composer to support patching
+ddev composer config allow-plugins.cweagans/composer-patches true
+ddev composer config --json extra.composer-exit-on-patch-failure true
+ddev composer config --json extra.patches.drupal/paragraphs '{ "Add UUID to table row": "patches/paragraphs-add-uuid-to-table-row.patch" }'
+ddev composer require cweagans/composer-patches
+
+## Extend Drupal using Recipes
+ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
+ddev exec -d /var/www/html/web php core/scripts/drupal recipe ../recipes/drupal-decoupled-graphql-advanced-recipe
+
+## Update Composer to support unpacking
+ddev composer config allow-plugins.ewcomposer/unpack true
+ddev composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
+ddev composer require ewcomposer/unpack:dev-master
+ddev composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
+ddev composer install
+
+# curl -s https://raw.githubusercontent.com/octahedroid/drupal-decoupled/main/drupal/scripts/consumers.php > consumers.php
+ddev drush php:script scripts/consumers
+
+## Rebuild permissions
+ddev drush php-eval 'node_access_rebuild();'
+
+ddev drush cr
+
+ddev drush uli

@@ -1,9 +1,0 @@
-uuid: 279c32de-007f-4c53-a03b-060706817aaa
-langcode: en
-status: true
-dependencies: {  }
-name: Tags
-vid: tags
-description: null
-weight: 0
-new_revision: false
