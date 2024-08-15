@@ -15,6 +15,7 @@ ddev composer install
 ## Install Drupal
 ddev drush site:install minimal --verbose -y
 
+## Update Composer minimum-stability
 ddev composer config minimum-stability --merge --json "dev"
 
 ## Update Composer to support patching
@@ -34,7 +35,7 @@ ddev composer require ewcomposer/unpack:dev-master
 ddev composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
 ddev composer install
 
-# curl -s https://raw.githubusercontent.com/octahedroid/drupal-decoupled/main/drupal/scripts/consumers.php > consumers.php
+## Generate consumers
 ddev drush php:script scripts/consumers
 
 ## Rebuild permissions
