@@ -1,4 +1,4 @@
-# Decoupled Drupal GraphQL Example
+# Decoupled Drupal Project
 
 ## Getting Started
 
