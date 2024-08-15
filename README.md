@@ -1,4 +1,4 @@
-# Decoupled Drupal Project
+# Drupal Decoupled Project
 
 ## Getting Started
 
