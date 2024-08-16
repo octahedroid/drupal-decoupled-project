@@ -1,0 +1,37 @@
+tooling:
+  install:
+    service: appserver
+    description: Install and configures the project and decoupled capabilities.
+    cmd:
+      ## Add drush
+      - composer require drush/drush
+      ## Install Dependencies
+      - composer install
+      ## Install Drupal
+      - drush site:install minimal --db-url=mysql://drupal10:drupal10@database/drupal10 --account-name=admin --account-pass=admin -y
+      ## Update Composer minimum-stability
+      - composer config minimum-stability --merge --json "dev"
+      ## Update Composer to support patching
+      - composer config allow-plugins.cweagans/composer-patches true
+      - composer config --json extra.composer-exit-on-patch-failure true
+      - |
+        composer config --json extra.patches.drupal/paragraphs '{ "Add UUID to table row": "patches/paragraphs-add-uuid-to-table-row.patch" }'
+      - composer require cweagans/composer-patches
+      ## Extend Drupal using Recipes
+      - composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
+      - cd web && php core/scripts/drupal recipe ../recipes/drupal-decoupled-graphql-advanced-recipe
+      ## Update Composer to support unpacking
+      - composer config allow-plugins.ewcomposer/unpack true
+      - composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
+      - composer require ewcomposer/unpack:dev-master
+      - composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
+      - composer install
+      ## Generate consumers
+      - drush php:script scripts/consumers
+
+      ## Rebuild permissions
+      - drush php-eval 'node_access_rebuild();'
+      - drush cr
+      - drush uli
+    env:
+      DRUSH_OPTIONS_URI: drupal-decoupled.lndo.site
