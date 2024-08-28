@@ -147,6 +147,7 @@ services:
         - vendor/bin/drush cache:rebuild
         # Generate a one-time login link.
         - vendor/bin/drush uli -l $TUGBOAT_SERVICE_URL
+        - echo "backend-url:${TUGBOAT_SERVICE_URL}"
 
   frontend:
     image: tugboatqa/debian:bookworm
@@ -213,3 +214,4 @@ services:
         # Warm the cache
         - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:8080
           || /bin/true'
+        - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
