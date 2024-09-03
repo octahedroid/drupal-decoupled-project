@@ -6,6 +6,7 @@ services:
     commands:
       init:
         - |
+          set -e
           wget https://dl.min.io/server/minio/release/linux-amd64/minio
           chmod +x minio
           mkdir /data
@@ -52,16 +53,15 @@ services:
       # The INIT command configures the webserver.
       init:
         # Install opcache and mod-rewrite.
-        - |
-          apt update && apt install -y libzip4 libzip-dev
-          docker-php-ext-install opcache zip
-          a2enmod headers rewrite
+        - apt update && apt install -y libzip4 libzip-dev
+        - docker-php-ext-install opcache zip
+        - a2enmod headers rewrite
         # Install MinIO client.
-        - |
-          curl https://dl.min.io/client/mc/release/linux-amd64/mc --create-dirs -o $HOME/minio-binaries/mc
-          chmod +x $HOME/minio-binaries/mc
+        - curl https://dl.min.io/client/mc/release/linux-amd64/mc --create-dirs -o $HOME/minio-binaries/mc
+        - chmod +x $HOME/minio-binaries/mc
         # Set up MinIO client.
         - |
+          set -e
           $HOME/minio-binaries/mc alias set storage http://storage:9000 minioadmin minioadmin
           $HOME/minio-binaries/mc mb storage/urls
         # Link the document root to the expected path. This example links /web
@@ -75,6 +75,7 @@ services:
       update:
         ## Install Drupal
         - |
+          set -e
           composer require drush/drush
           composer install
           vendor/bin/drush site:install minimal --db-url=mysql://tugboat:tugboat@database/tugboat --account-name=drupaldecoupled --account-pass=drupaldecoupled -y
@@ -90,34 +91,35 @@ services:
 
         ## Update Composer to support patching
         - |
+          set -e
           composer config allow-plugins.cweagans/composer-patches true
           composer config --json extra.composer-exit-on-patch-failure true
           composer config --json extra.patches.drupal/paragraphs { "Add UUID to table row": "patches/paragraphs-add-uuid-to-table-row.patch" }
           composer require cweagans/composer-patches
         ## Extend Drupal using Recipes
         - |
+          set -e
           composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
           cd $DOCROOT && php ${DOCROOT}/core/scripts/drupal recipe ${DOCROOT}/../recipes/drupal-decoupled-graphql-advanced-recipe
 
         ## Update Composer to support unpacking
-        - |
-          composer config allow-plugins.ewcomposer/unpack true
-          composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
-          composer require ewcomposer/unpack:dev-master
-          composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
-          composer require drush/drush
-          composer install
+        - composer config allow-plugins.ewcomposer/unpack true
+        - composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
+        - composer require ewcomposer/unpack:dev-master
+        - composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
+        - composer require drush/drush
+        - composer install
 
         ## Generate consumers
         - vendor/bin/drush php:script scripts/consumers
 
         ## Rebuild permissions
-        - |
-          vendor/bin/drush php-eval 'node_access_rebuild();'
-          vendor/bin/drush cr
+        - vendor/bin/drush php-eval 'node_access_rebuild();'
+        - vendor/bin/drush cr
 
         # Make sure our files and translations folders exists and are writable.
         - |
+          set -e
           mkdir -p "${DOCROOT}/sites/default/files/translations"
           chgrp -R www-data "${DOCROOT}/sites/default/files"
           find "${DOCROOT}/sites/default/files" -type d -exec chmod 2775 {} \;
@@ -133,15 +135,13 @@ services:
       # from the base preview.
       build:
         # Install new configuration and database updates.
-        - |
-          vendor/bin/drush cache:rebuild
-          vendor/bin/drush config:export --yes && vendor/bin/drush config:import --yes
-          vendor/bin/drush updatedb --yes
+        - vendor/bin/drush cache:rebuild
+        - vendor/bin/drush config:export --yes && vendor/bin/drush config:import --yes
+        - vendor/bin/drush updatedb --yes
 
         # Write webserver public URL stored on minio(storage).
-        - |
-          echo "${TUGBOAT_SERVICE_URL%/}" > webserver-url && $HOME/minio-binaries/mc put webserver-url storage/urls
-          vendor/bin/drush php:script replace_preview_consumer
+        - echo "${TUGBOAT_SERVICE_URL%/}" > webserver-url && $HOME/minio-binaries/mc put webserver-url storage/urls
+        - vendor/bin/drush php:script replace_preview_consumer
 
         # One last cache rebuild.
         - vendor/bin/drush cache:rebuild
@@ -160,37 +160,37 @@ services:
       - share:/share
     commands:
       init:
-        - |
-          mkdir -p /etc/service/frontend
-          apt update && apt install -y git curl
+        - mkdir -p /etc/service/frontend
+        - apt update && apt install -y git curl
         # Install MinIO client.
         - |
+          set -e
           curl https://dl.min.io/client/mc/release/linux-amd64/mc --create-dirs -o $HOME/minio-binaries/mc
           chmod +x $HOME/minio-binaries/mc
         # Set up MinIO client.
         - $HOME/minio-binaries/mc alias set storage http://storage:9000 minioadmin minioadmin
         # Install Node.js and Yarn.
         - |
+          set -e
           curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh && bash nodesource_setup.sh
           apt install -y nodejs
           npm install -g yarn
         # Clone the repository into the service container.
-        - |
-          mkdir -p $(dirname /var/lib/tugboat-fe)
-          git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
+        - mkdir -p $(dirname /var/lib/tugboat-fe)
+        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
       update: []
       build:
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
         # Set up environment variables.
+        - echo "DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" > /etc/service/frontend/.env
+        - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
+        - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
+        - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
+        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
+        - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
         - |
-          echo "DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" > /etc/service/frontend/.env
-          echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
-          echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
-          echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
-          echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
-          echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
-        - |
+          set -e
           case $(cat /etc/service/frontend/framework) in
             next)
               echo "--hostname" > /etc/service/frontend/hostname-flag
@@ -208,6 +208,7 @@ services:
         - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn build
         # Create the service runit script.
         - |
+          set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
           echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
