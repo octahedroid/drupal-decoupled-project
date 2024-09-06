@@ -148,6 +148,13 @@ services:
         # Generate a one-time login link.
         - vendor/bin/drush uli -l $TUGBOAT_SERVICE_URL
         - echo "backend-url:${TUGBOAT_SERVICE_URL}"
+      clone:
+        # Write updated webserver public URL stored on minio(storage).
+        - echo "${TUGBOAT_SERVICE_URL%/}" > webserver-url && $HOME/minio-binaries/mc put webserver-url storage/urls
+        - vendor/bin/drush php:script replace_preview_consumer
+        # Generate a one-time login link.
+        - vendor/bin/drush uli -l $TUGBOAT_SERVICE_URL
+        - echo "backend-url:${TUGBOAT_SERVICE_URL}"
 
   frontend:
     image: tugboatqa/debian:bookworm
@@ -207,6 +214,38 @@ services:
         # Build the frontend.
         - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn build
         # Create the service runit script.
+        - |
+          set -e
+          echo "#!/bin/sh" > /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
+          chmod +x /etc/service/frontend/run
+        # Warm the cache
+        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:8080
+          || /bin/true'
+        - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
+      clone:
+        # Set the frontend framework, replace this line with the framework you are using.
+        - echo "next" > /etc/service/frontend/framework
+        # Set up environment variables.
+        - echo "DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" > /etc/service/frontend/.env
+        - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
+        - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
+        - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
+        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
+        - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
+        - |
+          set -e
+          case $(cat /etc/service/frontend/framework) in
+            next)
+              echo "--hostname" > /etc/service/frontend/hostname-flag
+              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.env.local
+            ;;
+            remix)
+              echo "--ip" > /etc/service/frontend/hostname-flag
+              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.dev.vars
+            ;;
+          esac
+        # Recreate the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
