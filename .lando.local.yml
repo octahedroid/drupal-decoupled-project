@@ -28,6 +28,8 @@ tooling:
       - composer install
       ## Generate consumers
       - drush php:script scripts/consumers
+      ## Generate menus
+      - drush php:script scripts/menus
 
       ## Rebuild permissions
       - drush php-eval 'node_access_rebuild();'
