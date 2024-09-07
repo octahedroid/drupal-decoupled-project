@@ -37,6 +37,8 @@ ddev composer install
 
 ## Generate consumers
 ddev drush php:script scripts/consumers
+## Generate menus
+ddev drush php:script scripts/menus
 
 ## Rebuild permissions
 ddev drush php-eval 'node_access_rebuild();'
