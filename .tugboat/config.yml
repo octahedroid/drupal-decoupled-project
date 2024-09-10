@@ -196,7 +196,7 @@ services:
         - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
         - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
         - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
-        - echo "ENVIRONMENT=production" >> /etc/service/frontend/.env
+        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
         - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
         - |
           set -e
@@ -233,7 +233,7 @@ services:
         - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
         - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
         - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
-        - echo "ENVIRONMENT=production" >> /etc/service/frontend/.env
+        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
         - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
         - |
           set -e
