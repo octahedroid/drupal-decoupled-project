@@ -184,11 +184,12 @@ services:
           curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh && bash nodesource_setup.sh
           apt install -y nodejs
           npm install -g yarn
-        # Clone the repository into the service container.
-        - mkdir -p $(dirname /var/lib/tugboat-fe)
-        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
       update: []
       build:
+        # Clone the repository into the service container.
+        - rm -rf /var/lib/tugboat-fe
+        - mkdir -p /var/lib/tugboat-fe
+        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
         # Set up environment variables.
