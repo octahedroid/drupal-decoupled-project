@@ -258,3 +258,51 @@ services:
         - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:8080
           || /bin/true'
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
+
+  storybook:
+    image: tugboatqa/debian:bookworm
+    expose: 6006
+    commands:
+      init:
+        - mkdir -p /etc/service/storybook
+        - apt update && apt install -y git curl
+        # Install Node.js and Yarn.
+        - |
+          set -e
+          curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh && bash nodesource_setup.sh
+          apt install -y nodejs
+          npm install -g yarn http-server
+      update: []
+      build:
+        # Clone the repository into the service container.
+        - rm -rf /var/lib/tugboat-storybook
+        - mkdir -p /var/lib/tugboat-storybook
+        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-storybook --depth=1
+        # Set the frontend framework, replace this line with the framework you are using.
+        - echo "storybook" > /etc/service/storybook/framework
+        # Install framework dependencies.
+        - cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && yarn install
+        # Build the frontend.
+        - cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && yarn build-storybook
+        # Create the service runit script.
+        - |
+          set -e
+          echo "#!/bin/sh" > /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          chmod +x /etc/service/storybook/run
+        # Warm the cache
+        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:6006
+          || /bin/true'
+        - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
+      clone:
+        - echo "storybook" > /etc/service/storybook/framework
+        # Create the service runit script.
+        - |
+          set -e
+          echo "#!/bin/sh" > /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          chmod +x /etc/service/storybook/run
+        # Warm the cache
+        - 'wget -e robots=off --quiet --page-requisites --delete-after --header "Host: ${TUGBOAT_SERVICE_URL_HOST}" http://localhost:6006
+          || /bin/true'
+        - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
