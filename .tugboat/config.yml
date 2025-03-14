@@ -217,7 +217,7 @@ services:
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
@@ -246,7 +246,7 @@ services:
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start --port 8080 $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
