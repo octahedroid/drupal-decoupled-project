@@ -189,25 +189,6 @@ services:
         - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
-        # Set up environment variables.
-        - echo "DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" > /etc/service/frontend/.env
-        - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
-        - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
-        - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
-        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
-        - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
-        - |
-          set -e
-          case $(cat /etc/service/frontend/framework) in
-            next)
-              echo "--hostname" > /etc/service/frontend/hostname-flag
-              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.env.local
-            ;;
-            remix)
-              echo "--ip" > /etc/service/frontend/hostname-flag
-              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.dev.vars
-            ;;
-          esac
 
         # Install framework dependencies.
         - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn install
@@ -217,36 +198,33 @@ services:
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
+          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run 
+          echo "export DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/run
+          echo "export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/run
+          echo "export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/run
+          echo "export ENVIRONMENT=preview" >> /etc/service/frontend/run
+          echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
+          echo "export PORT=8080" >> /etc/service/frontend/run
+          echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
-        # Set up environment variables.
-        - echo "DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" > /etc/service/frontend/.env
-        - echo "DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/.env
-        - echo "DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/.env
-        - echo "DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/.env
-        - echo "ENVIRONMENT=preview" >> /etc/service/frontend/.env
-        - echo "NODE_VERSION=v20.10.0" >> /etc/service/frontend/.env
-        - |
-          set -e
-          case $(cat /etc/service/frontend/framework) in
-            next)
-              echo "--hostname" > /etc/service/frontend/hostname-flag
-              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.env.local
-            ;;
-            remix)
-              echo "--ip" > /etc/service/frontend/hostname-flag
-              cp /etc/service/frontend/.env /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework)/.dev.vars
-            ;;
-          esac
         # Recreate the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start $(cat /etc/service/frontend/hostname-flag) 0.0.0.0" >> /etc/service/frontend/run
+          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run 
+          echo "export DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/run
+          echo "export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/run
+          echo "export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/run
+          echo "export ENVIRONMENT=preview" >> /etc/service/frontend/run
+          echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
+          echo "export PORT=8080" >> /etc/service/frontend/run
+          echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
