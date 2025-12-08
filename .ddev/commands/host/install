@@ -15,33 +15,19 @@ ddev composer install
 ## Install Drupal
 ddev drush site:install minimal --verbose -y
 
-## Update Composer minimum-stability
-ddev composer config minimum-stability --merge --json "dev"
-
-## Update Composer to support patching
-ddev composer config allow-plugins.cweagans/composer-patches true
-ddev composer config --json extra.composer-exit-on-patch-failure true
-ddev composer require cweagans/composer-patches
-
 ## Extend Drupal using Recipes
-ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
+ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^11
 ddev drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
-
-## Update Composer to support unpacking
-ddev composer config allow-plugins.ewcomposer/unpack true
-ddev composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
-ddev composer require ewcomposer/unpack:dev-master
-ddev composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
-ddev composer install
-
-## Generate consumers
+### Generate scopes
+ddev drush php:script scripts/scopes
+### Generate consumers
 ddev drush php:script scripts/consumers
-## Generate menus
+### Generate menus
 ddev drush php:script scripts/menus
-
-## Rebuild permissions
+#
+### Rebuild permissions
 ddev drush php-eval 'node_access_rebuild();'
-
+#
 ddev drush cr
-
+#
 ddev drush uli

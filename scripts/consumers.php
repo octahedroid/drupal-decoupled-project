@@ -11,24 +11,32 @@ $previewerClientId = Crypt::randomBytesBase64();
 $previewerClientSecret = $random->word(8);
 $consumerStorage->create([
   'client_id' => $previewerClientId,
-  'client_secret ' => $previewerClientSecret,
+  'secret' => $previewerClientSecret,
   'label' => 'Previewer',
   'user_id' => 2,
   'third_party' => TRUE,
   'is_default' => FALSE,
   'roles' => ['previewer'],
+  'grant_types' => ['client_credentials'],
+  'scopes' => [
+    ['scope_id' => 'content_preview'],
+  ],
 ])->save();
 
 $viewerClientId = Crypt::randomBytesBase64();
 $viewerClientSecret = $random->word(8);
 $consumerStorage->create([
   'client_id' => $viewerClientId,
-  'client_secret ' => $viewerClientSecret,
+  'secret' => $viewerClientSecret,
   'label' => 'Viewer',
   'user_id' => 2,
   'third_party' => TRUE,
   'is_default' => FALSE,
   'roles' => ['viewer'],
+  'grant_types' => ['client_credentials'],
+  'scopes' => [
+    ['scope_id' => 'content_published'],
+  ],
 ])->save();
 
 $directory = '../keys';
