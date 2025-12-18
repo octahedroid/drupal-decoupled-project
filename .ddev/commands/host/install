@@ -24,7 +24,7 @@ ddev composer config --json extra.composer-exit-on-patch-failure true
 ddev composer require cweagans/composer-patches
 
 ## Extend Drupal using Recipes
-ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
+ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^1
 ddev drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
 
 ## Update Composer to support unpacking
