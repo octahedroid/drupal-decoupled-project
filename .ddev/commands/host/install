@@ -16,7 +16,7 @@ ddev composer install
 ddev drush site:install minimal --verbose -y
 
 ## Extend Drupal using Recipes
-ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^11
+ddev composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^2
 ddev drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
 ### Generate scopes
 ddev drush php:script scripts/scopes
