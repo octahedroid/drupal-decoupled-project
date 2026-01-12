@@ -8,22 +8,12 @@ tooling:
       ## Install Dependencies
       - composer install
       ## Install Drupal
-      - drush site:install minimal --db-url=mysql://drupal10:drupal10@database/drupal10 --account-name=admin --account-pass=admin -y
-      ## Update Composer minimum-stability
-      - composer config minimum-stability --merge --json "dev"
-      ## Update Composer to support patching
-      - composer config allow-plugins.cweagans/composer-patches true
-      - composer config --json extra.composer-exit-on-patch-failure true
-      - composer require cweagans/composer-patches
+      - drush site:install minimal --db-url=mysql://drupal11:drupal11@database/drupal11 --account-name=admin --account-pass=admin -y
       ## Extend Drupal using Recipes
-      - composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
-      - cd web && php core/scripts/drupal recipe ../recipes/drupal-decoupled-graphql-advanced-recipe
-      ## Update Composer to support unpacking
-      - composer config allow-plugins.ewcomposer/unpack true
-      - composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
-      - composer require ewcomposer/unpack:dev-master
-      - composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
-      - composer install
+      - composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^2
+      - drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
+      ## Generate scopes
+      - drush php:script scripts/scopes
       ## Generate consumers
       - drush php:script scripts/consumers
       ## Generate menus
