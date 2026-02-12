@@ -180,9 +180,16 @@ services:
         - echo "next" > /etc/service/frontend/framework
 
         # Install framework dependencies.
-        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm install
-        # Build the frontend.
-        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm build
+        - pnpm --dir /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) install
+        # Build the frontend with required env vars.
+        - |
+          set -e
+          export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}
+          export DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}
+          export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)
+          export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql
+          export ENVIRONMENT=preview
+          pnpm --dir /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) build
         # Create the service runit script.
         - |
           set -e
@@ -195,7 +202,7 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm start" >> /etc/service/frontend/run
+          echo "pnpm --dir /var/lib/tugboat-fe/starters/\$(cat /etc/service/frontend/framework) start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
@@ -213,7 +220,7 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm start" >> /etc/service/frontend/run
+          echo "pnpm --dir /var/lib/tugboat-fe/starters/\$(cat /etc/service/frontend/framework) start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
