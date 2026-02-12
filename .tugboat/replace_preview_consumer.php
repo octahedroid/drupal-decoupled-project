@@ -16,11 +16,15 @@ foreach ($previewers as $previewer) {
 $consumerStorage
     ->create([
         "client_id" => $previewerClientId,
-        "client_secret " => $previewerClientSecret,
+        "secret" => $previewerClientSecret,
         "label" => "Previewer",
         "user_id" => 2,
         "third_party" => true,
         "is_default" => false,
         "roles" => ["previewer"],
+        "grant_types" => ["client_credentials"],
+        "scopes" => [
+            ["scope_id" => "content_preview"],
+        ],
     ])
     ->save();

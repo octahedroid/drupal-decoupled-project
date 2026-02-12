@@ -2,7 +2,7 @@
 # https://docs.tugboatqa.com/starter-configs/tutorials/drupal-10/
 services:
   storage:
-    image: tugboatqa/debian:bookworm
+    image: tugboatqa/debian:forky
     commands:
       init:
         - |
@@ -17,16 +17,15 @@ services:
 
   # Define the database service.
   database:
-    # Use the latest available 5.x version of MySQL
-    image: tugboatqa/mariadb:10.5
+    image: tugboatqa/mariadb:12
 
     # A set of commands to run while building this service
     commands:
       # Configure the server for the site to run on.
       init:
         # Increase the allowed packet size to 512MB.
-        - mysql -e "SET GLOBAL max_allowed_packet=536870912;"
-        # Ensure this packet size persists even if MySQL restarts.
+        - mariadb -e "SET GLOBAL max_allowed_packet=536870912;"
+        # Ensure this packet size persists even if MariaDB restarts.
         - echo "max_allowed_packet=536870912" >> /etc/mysql/conf.d/tugboat.cnf
 
       # Commands that import files, databases,  or other assets. When an
@@ -52,8 +51,10 @@ services:
     commands:
       # The INIT command configures the webserver.
       init:
+        # Increase PHP memory limit.
+        - echo "memory_limit = -1" > /usr/local/etc/php/conf.d/tugboat-memory.ini
         # Install opcache and mod-rewrite.
-        - apt update && apt install -y libzip4 libzip-dev
+        - apt update && apt install -y libzip-dev
         - docker-php-ext-install opcache zip
         - a2enmod headers rewrite
         # Install MinIO client.
@@ -89,26 +90,14 @@ services:
         ## Update Composer minimum-stability
         - composer config minimum-stability --merge --json "dev"
 
-        ## Update Composer to support patching
-        - |
-          set -e
-          composer config allow-plugins.cweagans/composer-patches true
-          composer config --json extra.composer-exit-on-patch-failure true
-          composer require cweagans/composer-patches
         ## Extend Drupal using Recipes
         - |
           set -e
-          composer require octahedroid/drupal-decoupled-graphql-advanced-recipe
-          cd $DOCROOT && php ${DOCROOT}/core/scripts/drupal recipe ${DOCROOT}/../recipes/drupal-decoupled-graphql-advanced-recipe
+          composer require octahedroid/drupal-decoupled-graphql-advanced-recipe:^2
+          vendor/bin/drush recipe ../recipes/drupal-decoupled-graphql-advanced-recipe -v
 
-        ## Update Composer to support unpacking
-        - composer config allow-plugins.ewcomposer/unpack true
-        - composer config repo.recipe-unpack vcs https://github.com/woredeyonas/Drupal-Recipe-Unpack.git
-        - composer require ewcomposer/unpack:dev-master
-        - composer unpack octahedroid/drupal-decoupled-graphql-advanced-recipe
-        - composer require drush/drush
-        - composer install
-
+        ## Generate scopes
+        - vendor/bin/drush php:script scripts/scopes
         ## Generate consumers
         - vendor/bin/drush php:script scripts/consumers
         ## Generate menus
@@ -158,7 +147,7 @@ services:
         - echo "backend-url:${TUGBOAT_SERVICE_URL}"
 
   frontend:
-    image: tugboatqa/debian:bookworm
+    image: tugboatqa/debian:forky
     depends:
       - webserver
       - storage
@@ -180,7 +169,7 @@ services:
           set -e
           curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh && bash nodesource_setup.sh
           apt install -y nodejs
-          npm install -g yarn
+          npm install -g pnpm
       update: []
       build:
         # Clone the repository into the service container.
@@ -191,9 +180,9 @@ services:
         - echo "next" > /etc/service/frontend/framework
 
         # Install framework dependencies.
-        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn install
+        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm install
         # Build the frontend.
-        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn build
+        - cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm build
         # Create the service runit script.
         - |
           set -e
@@ -206,7 +195,7 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
@@ -216,7 +205,7 @@ services:
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run 
+          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run
           echo "export DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/run
           echo "export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/run
           echo "export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/run
@@ -224,12 +213,12 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && yarn start" >> /etc/service/frontend/run
+          echo "cd /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) && pnpm start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
   storybook:
-    image: tugboatqa/debian:bookworm
+    image: tugboatqa/debian:forky
     expose: 6006
     commands:
       init:
@@ -240,32 +229,29 @@ services:
           set -e
           curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh && bash nodesource_setup.sh
           apt install -y nodejs
-          npm install -g yarn http-server
+          npm install -g pnpm http-server
       update: []
       build:
         # Clone the repository into the service container.
         - rm -rf /var/lib/tugboat-storybook
         - mkdir -p /var/lib/tugboat-storybook
         - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-storybook --depth=1
-        # Set the frontend framework, replace this line with the framework you are using.
-        - echo "storybook" > /etc/service/storybook/framework
         # Install framework dependencies.
-        - cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && yarn install
+        - cd /var/lib/tugboat-storybook/apps/storybook && pnpm install
         # Build the frontend.
-        - cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && yarn build-storybook
+        - cd /var/lib/tugboat-storybook/apps/storybook && pnpm build-storybook
         # Create the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/storybook/run
-          echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook/apps/storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
       clone:
-        - echo "storybook" > /etc/service/storybook/framework
         # Create the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/storybook/run
-          echo "cd /var/lib/tugboat-storybook/starters/$(cat /etc/service/storybook/framework) && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook/apps/storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
