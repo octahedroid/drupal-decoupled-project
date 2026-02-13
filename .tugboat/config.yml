@@ -172,15 +172,10 @@ services:
           npm install -g pnpm
       update: []
       build:
-        # Clone the repository into the service container.
-        - rm -rf /var/lib/tugboat-fe
-        - mkdir -p /var/lib/tugboat-fe
-        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-fe --depth=1
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
-
-        # Install framework dependencies.
-        - pnpm --dir /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) install
+        # Scaffold the frontend into the service container.
+        - pnpm dlx create-react-router@latest /var/lib/tugboat-fe --template octahedroid/drupal-decoupled/starters/$(cat /etc/service/frontend/framework) --no-git-init --no-color --no-motion -y
         # Build the frontend with required env vars.
         - |
           set -e
@@ -189,12 +184,12 @@ services:
           export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)
           export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql
           export ENVIRONMENT=preview
-          pnpm --dir /var/lib/tugboat-fe/starters/$(cat /etc/service/frontend/framework) build
+          pnpm --dir /var/lib/tugboat-fe build
         # Create the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/frontend/run
-          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run 
+          echo "export DRUPAL_CLIENT_ID=${TUGBOAT_DEFAULT_SERVICE_ID}" >> /etc/service/frontend/run
           echo "export DRUPAL_CLIENT_SECRET=${TUGBOAT_PREVIEW_ID}${TUGBOAT_DEFAULT_SERVICE_TOKEN}" >> /etc/service/frontend/run
           echo "export DRUPAL_AUTH_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)" >> /etc/service/frontend/run
           echo "export DRUPAL_GRAPHQL_URI=$($HOME/minio-binaries/mc cat storage/urls/webserver-url)/graphql" >> /etc/service/frontend/run
@@ -202,7 +197,7 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "pnpm --dir /var/lib/tugboat-fe/starters/\$(cat /etc/service/frontend/framework) start" >> /etc/service/frontend/run
+          echo "pnpm --dir /var/lib/tugboat-fe start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
       clone:
@@ -220,7 +215,7 @@ services:
           echo "export NODE_VERSION=v20.10.0" >> /etc/service/frontend/run
           echo "export PORT=8080" >> /etc/service/frontend/run
           echo "export HOST=0.0.0.0" >> /etc/service/frontend/run
-          echo "pnpm --dir /var/lib/tugboat-fe/starters/\$(cat /etc/service/frontend/framework) start" >> /etc/service/frontend/run
+          echo "pnpm --dir /var/lib/tugboat-fe start" >> /etc/service/frontend/run
           chmod +x /etc/service/frontend/run
         - echo "frontend-url:${TUGBOAT_SERVICE_URL}"
 
@@ -239,19 +234,17 @@ services:
           npm install -g pnpm http-server
       update: []
       build:
-        # Clone the repository into the service container.
-        - rm -rf /var/lib/tugboat-storybook
-        - mkdir -p /var/lib/tugboat-storybook
-        - git clone https://github.com/octahedroid/drupal-decoupled.git /var/lib/tugboat-storybook --depth=1
-        # Install framework dependencies.
-        - cd /var/lib/tugboat-storybook/apps/storybook && pnpm install
-        # Build the frontend.
-        - cd /var/lib/tugboat-storybook/apps/storybook && pnpm build-storybook
+        # Set the frontend framework, replace this line with the framework you are using.
+        - echo "next" > /etc/service/storybook/framework
+        # Scaffold the frontend into the service container.
+        - pnpm dlx create-react-router@latest /var/lib/tugboat-storybook --template octahedroid/drupal-decoupled/starters/$(cat /etc/service/storybook/framework) --no-git-init --no-color --no-motion -y
+        # Build storybook.
+        - pnpm --dir /var/lib/tugboat-storybook build-storybook
         # Create the service runit script.
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/storybook/run
-          echo "cd /var/lib/tugboat-storybook/apps/storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
       clone:
@@ -259,6 +252,6 @@ services:
         - |
           set -e
           echo "#!/bin/sh" > /etc/service/storybook/run
-          echo "cd /var/lib/tugboat-storybook/apps/storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
+          echo "cd /var/lib/tugboat-storybook && http-server ./storybook-static -p 6006" >> /etc/service/storybook/run
           chmod +x /etc/service/storybook/run
         - echo "storybook-url:${TUGBOAT_SERVICE_URL}"
