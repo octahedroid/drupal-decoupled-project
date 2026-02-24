@@ -174,6 +174,8 @@ services:
       build:
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/frontend/framework
+        # Remove existing directory to prevent overwrite errors.
+        - rm -rf /var/lib/tugboat-fe
         # Scaffold the frontend into the service container.
         - pnpm dlx create-react-router@latest /var/lib/tugboat-fe --template octahedroid/drupal-decoupled/starters/$(cat /etc/service/frontend/framework) --no-git-init --no-color --no-motion -y
         # Build the frontend with required env vars.
@@ -236,6 +238,8 @@ services:
       build:
         # Set the frontend framework, replace this line with the framework you are using.
         - echo "next" > /etc/service/storybook/framework
+        # Remove existing directory to prevent overwrite errors.
+        - rm -rf /var/lib/tugboat-storybook
         # Scaffold the frontend into the service container.
         - pnpm dlx create-react-router@latest /var/lib/tugboat-storybook --template octahedroid/drupal-decoupled/starters/$(cat /etc/service/storybook/framework) --no-git-init --no-color --no-motion -y
         # Build storybook.
